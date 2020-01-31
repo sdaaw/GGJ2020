@@ -35,6 +35,15 @@ public class PlayerController : MonoBehaviour
     public List<AudioClip> clips = new List<AudioClip>();
     public AudioSource bgMusic;
 
+
+    public bool HasGun
+    {
+        get
+        {
+            return GetComponent<Gun>() != null;
+        }
+    }
+
     public void SetMusic(bool wierdMusic)
     {
         if (bgMusic == null)
@@ -77,6 +86,15 @@ public class PlayerController : MonoBehaviour
         {
             if(m_allowDash)
                 StartCoroutine(Dash());
+        }
+
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            //check all weapons here
+            if(HasGun)
+            {
+                GetComponent<Gun>().Shoot(m_transform);
+            }
         }
     }
 
