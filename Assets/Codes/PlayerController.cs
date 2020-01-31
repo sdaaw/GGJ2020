@@ -54,19 +54,20 @@ public class PlayerController : MonoBehaviour
         m_transform = transform;
         m_rigidbody = GetComponent<Rigidbody>();
         m_allowDash = true;
+        m_playerCamera = FindObjectOfType<Camera>();
     }
 
     void FixedUpdate()
     {
         if (AllowMovement)
+        {
             DoMovement();
-
-        Rotate((MouseDir() - m_transform.position).normalized);
-
+            Rotate((MouseDir() - m_transform.position).normalized);
+        }
+           
         if (animator != null)
         {
             animator.SetFloat("speed", m_rigidbody.velocity.magnitude);
-            //Debug.Log(m_rigidbody.velocity.magnitude);
         }
     }
 
