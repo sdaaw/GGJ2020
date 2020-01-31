@@ -9,9 +9,13 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     private Rigidbody m_rigidbody;
-    private Vector3 m_moveVector;
-    private Vector3 m_xMoveVector;
     private Transform m_transform;
+
+    private Quaternion m_oldRotation;
+    private float m_horAxis;
+    private float m_verAxis;
+    private Vector3 m_move;
+    private Vector3 m_mousePos;
 
     [SerializeField]
     private Camera m_playerCamera;
@@ -19,9 +23,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask m_layerMask;
 
-    public float turnSpeed;
-
     public Animator animator;
+
+    [SerializeField]
+    private LayerMask m_dashMask;
+
+    public float dashDistance;
+    public float dashCooldown;
+    private bool m_allowDash;
 
     public List<AudioClip> clips = new List<AudioClip>();
     public AudioSource bgMusic;
@@ -44,12 +53,16 @@ public class PlayerController : MonoBehaviour
     {
         m_transform = transform;
         m_rigidbody = GetComponent<Rigidbody>();
+        m_allowDash = true;
     }
 
     void FixedUpdate()
     {
         if (AllowMovement)
             DoMovement();
+
+        Rotate((MouseDir() - m_transform.position).normalized);
+
         if (animator != null)
         {
             animator.SetFloat("speed", m_rigidbody.velocity.magnitude);
@@ -57,45 +70,90 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// Do player movement
-    /// </summary>
-    void DoMovement()
+    private void Update()
     {
-        m_rigidbody.velocity = Vector3.zero;
-        m_moveVector = m_xMoveVector;
-
-        m_xMoveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-        m_xMoveVector = GetVectorRelativeToObject(m_xMoveVector, m_playerCamera.transform);
-
-        if (m_xMoveVector.magnitude > 0)
+        if(Input.GetKeyDown(KeyCode.E))
         {
-            Quaternion targetRotation = Quaternion.LookRotation(m_xMoveVector, Vector3.up);
-            m_transform.rotation = Quaternion.Slerp(m_transform.rotation, targetRotation, 0.2f);
+            if(m_allowDash)
+                StartCoroutine(Dash());
         }
-
-        m_rigidbody.velocity = m_moveVector * speed;
     }
 
-    public static Vector3 GetVectorRelativeToObject(Vector3 inputVector, Transform camera)
+    void DoMovement()
     {
-        Vector3 objectRelativeVector = Vector3.zero;
-        if (inputVector != Vector3.zero)
+        m_oldRotation = m_playerCamera.transform.rotation;
+
+        Vector3 temp = m_oldRotation.eulerAngles;
+        temp.x = 0;
+        m_playerCamera.transform.rotation = Quaternion.Euler(temp);
+
+        m_horAxis = Input.GetAxis("Horizontal");
+        m_verAxis = Input.GetAxis("Vertical");
+
+        m_move.x = m_horAxis;
+        m_move.y = 0;
+        m_move.z = m_verAxis;
+
+        m_move = m_playerCamera.transform.TransformDirection(m_move);
+
+        m_playerCamera.transform.rotation = m_oldRotation;
+
+        m_move.y = 0;
+
+        Move(m_move);
+    }
+
+
+    protected void Move(Vector3 moveVector)
+    {
+        if (AllowMovement)
         {
-            Vector3 forward = camera.TransformDirection(Vector3.forward);
-            forward.y = 0f;
-            forward.Normalize();
-            Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
-
-            Vector3 relativeRight = inputVector.x * right;
-            Vector3 relativeForward = inputVector.z * forward;
-
-            objectRelativeVector = relativeRight + relativeForward;
-
-            if (objectRelativeVector.magnitude > 1f) objectRelativeVector.Normalize();
+            m_transform.Translate(moveVector * Time.fixedDeltaTime * speed, Space.World);
         }
-        return objectRelativeVector;
+    }
+
+    protected void Rotate(Vector3 rotateVector)
+    {
+        if (AllowMovement)
+        {
+            m_transform.rotation = Quaternion.LookRotation(new Vector3(rotateVector.x,0,rotateVector.z));
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        m_allowDash = false;
+
+        Vector3 dir = m_transform.forward;
+
+        if (m_move.magnitude > 0)
+        {
+            dir = m_move;
+        }
+
+        RaycastHit[] hit = Physics.RaycastAll(m_transform.position, dir, dashDistance + 1, m_dashMask);
+
+        if (hit.Length > 1 && hit[1].collider != null)
+        {
+            //???
+            m_transform.position = hit[1].point - dir;
+        }
+        else
+        {
+            m_transform.Translate(dir * dashDistance, Space.World);
+        }
+
+        yield return new WaitForSeconds(dashCooldown);
+
+        m_allowDash = true;
+    }
+
+    private Vector3 MouseDir()
+    {
+        m_mousePos.x = Input.mousePosition.x;
+        m_mousePos.y = Input.mousePosition.y;
+        m_mousePos.z = Camera.main.WorldToScreenPoint(m_transform.position).z;
+
+        return Camera.main.ScreenToWorldPoint(m_mousePos);
     }
 }
