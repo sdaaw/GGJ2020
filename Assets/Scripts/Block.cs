@@ -14,6 +14,8 @@ public class Block : MonoBehaviour
 
     public Texture corruptedTexture;
 
+    public Vector3 finalDestination;
+
     public void Start()
     {
         if(isBlock)
