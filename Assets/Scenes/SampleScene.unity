@@ -319,6 +319,24 @@ PrefabInstance:
       propertyPath: RoomSize
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: dangerPrefab
+      value: 
+      objectReference: {fileID: 6922355800463949403, guid: 5e981d7d97a5bb145b6170c9d77969cd,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 8769254606013830240, guid: ab0994900d3c32448bef271a5cd1eab5,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: wallPrefab
+      value: 
+      objectReference: {fileID: 4818638178630654069, guid: fe9869fcfef543e4ea27e8a0118b2224,
+        type: 3}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: m_LocalPosition.x

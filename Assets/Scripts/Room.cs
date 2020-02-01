@@ -12,12 +12,20 @@ public class Room : MonoBehaviour
 
     private List<GameObject> RoomFloor = new List<GameObject>();
     private List<GameObject> PropList = new List<GameObject>();
+    public List<GameObject> EnemyList = new List<GameObject>();
 
     public GameObject playerPrefab;
     public GameObject dangerPrefab;
+    public GameObject avoidanceManager;
+    public GameObject enemyPrefab;
+    public GameObject wallPrefab;
 
     private GameObject player;
-    
+
+    //TODO: Events
+    public bool avoidanceEvent = false;
+    public bool isRoomClear = false;
+
 
     public float RoomSize;
 
@@ -53,16 +61,24 @@ public class Room : MonoBehaviour
                 RoomFloor.Add(a);
             }
         }
-        //how many blockade blocks do we want   
-        int blockTiles = 4;
-        for(int i = 0; i < blockTiles; i++)
+
+        if (avoidanceEvent)
         {
-            GetBlockTile();
-        }
-        int dmgTiles = 2;
-        for(int i = 0; i < dmgTiles; i++)
+            Instantiate(avoidanceManager, Vector3.zero, Quaternion.identity);
+
+        } else
         {
-            GetDmgTile();
+
+            int blockTiles = 4; 
+            for (int i = 0; i < blockTiles; i++)
+            {
+                SetBlockTiles();
+            }
+            int dmgTiles = 2;
+            for (int i = 0; i < dmgTiles; i++)
+            {
+                SetDmgTiles();
+            }
         }
         SpawnTile = RoomFloor[(RoomFloor.Count / 2)];
         Renderer spawnTileMat = SpawnTile.GetComponent<Renderer>();
@@ -72,10 +88,34 @@ public class Room : MonoBehaviour
         m_camera.transform.position = new Vector3(SpawnTile.transform.position.x, 30, SpawnTile.transform.position.z - 8);
 
         player = Instantiate(playerPrefab, SpawnTile.transform.position + Vector3.up, Quaternion.identity);
+        StartCoroutine(SpawnEnemies());
+    }
+
+    void SetEnemies()
+    {
+        GameObject a = Instantiate(enemyPrefab, new Vector3(
+            RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.x, 
+            1,
+            RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.z), Quaternion.identity);
+        a.GetComponent<EnemyMelee>().AllowMovement = true;
+        EnemyList.Add(a);
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        player.GetComponent<PlayerController>().AllowMovement = false;
+        yield return new WaitForSeconds(3f);
+        int enemyCount = Random.Range(2, 5);
+        for (int i = 0; i < enemyCount; i++)
+        {
+            SetEnemies();
+        }
+        player.GetComponent<PlayerController>().AllowMovement = true;
+        yield return new WaitForSeconds(0.5f);
     }
 
 
-    void GetBlockTile()
+    void SetBlockTiles()
     {
         Block BlockTile;
         Renderer rend;
@@ -91,7 +131,7 @@ public class Room : MonoBehaviour
 
     }
 
-    void GetDmgTile()
+    void SetDmgTiles()
     {
         Block DmgTile;
         Renderer rend;
@@ -134,7 +174,8 @@ public class Room : MonoBehaviour
                 rend.material.color = new Color(
                     Mathf.Lerp(rend.material.color.r, 0.05f, 0.005f),
                     Mathf.Lerp(rend.material.color.g, 0.4f, 0.007f),
-                    Mathf.Lerp(rend.material.color.b, 0.01f, 0.002f)
+                    Mathf.Lerp(rend.material.color.b, 0.01f, 0.002f),
+                    Mathf.Lerp(rend.material.color.a, 0f, 0.002f)
                     );
             }
         }
@@ -150,28 +191,51 @@ public class Room : MonoBehaviour
             }
             StartCoroutine(CancelSpawnMovement());
         }
-
         if(Input.GetKeyUp(KeyCode.Space))
         {
-            if(!destroyRoom)
+            if(EnemyList.Count == 0)
             {
-
-                //destroy props first
-                foreach (GameObject p in PropList)
-                {
-                    Destroy(p);
-                }
-                PropList.Clear();
-                Destroy(player);
-                StartCoroutine(SpawnRoom());
-                destroyRoom = true;
+                StartCoroutine(RepairWorld());
             }
+            //avoidanceEvent = true;
         }
+    }
+
+    public void SwitchRoom()
+    {
+        if (!destroyRoom)
+        {
+            //destroy props first
+            foreach (GameObject p in PropList)
+            {
+                Destroy(p);
+            }
+            PropList.Clear();
+            Destroy(player);
+            StartCoroutine(SpawnRoom());
+            destroyRoom = true;
+        }
+    }
+
+    IEnumerator RepairWorld()
+    {
+        player.GetComponent<PlayerController>().AllowMovement = false;
+        Renderer rend;
+        foreach (GameObject block in RoomFloor)
+        {
+            rend = block.GetComponent<Renderer>();
+            rend.material.color = new Color(Random.Range(0.03f, 0.05f), Random.Range(0.3f, 0.5f), Random.Range(0.005f, 0.015f));
+
+            yield return new WaitForSeconds(0.001f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        SwitchRoom(); //use this to switch room
     }
 
 
     IEnumerator CancelSpawnMovement()
     {
+        //this is to stop the chunks/tiles/blocks from wobbling because of lerp
         yield return new WaitForSeconds(3f);
         spawnRoom = false;
     }

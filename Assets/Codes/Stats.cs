@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    private Room rm;
     public float health;
     public float maxHealth;
+
+    private void Start()
+    {
+        rm = FindObjectOfType<Room>();
+    }
 
     public void TakeDmg(float dmg)
     {
@@ -23,7 +29,7 @@ public class Stats : MonoBehaviour
     {
         //play dead animation
         //gg
-
+        rm.EnemyList.Remove(gameObject);
         Destroy(gameObject);
     }
 }

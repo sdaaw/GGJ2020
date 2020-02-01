@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5597576482571443073
+--- !u!1 &6565009710806804487
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5597576482571443075}
-  - component: {fileID: 5597576482571443074}
+  - component: {fileID: 127521913263214823}
+  - component: {fileID: -2160164357661802831}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: AvoidanceManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5597576482571443075
+--- !u!4 &127521913263214823
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5597576482571443073}
+  m_GameObject: {fileID: 6565009710806804487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.868156, y: -10.121922, z: 38.531147}
+  m_LocalPosition: {x: -34.031567, y: -39.961914, z: 43.93323}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5597576482571443074
+--- !u!114 &-2160164357661802831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5597576482571443073}
+  m_GameObject: {fileID: 6565009710806804487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7556deb46d4cc324aac1f0fa26d3063a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a5224126ef899745ad8980b46bb00be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloorPrefab: {fileID: 9213639829976847859, guid: 9b880c07ddfe5ed42b464e544ad9deee,
-    type: 3}
-  playerPrefab: {fileID: 0}
-  dangerPrefab: {fileID: 0}
-  avoidanceManager: {fileID: 6565009710806804487, guid: c27095dd9f6be94478b882948709a2f2,
-    type: 3}
-  avoidanceEvent: 0
-  RoomSize: 5
-  elevationFactor: 0.05
+  projectileList:
+  - {fileID: 4676891746925741364, guid: 12e3a6c73750309459e60f2e840b476e, type: 3}
+  - {fileID: 7275398906841098662, guid: 78394263a4c57a84791f2650a757e101, type: 3}
+  SpawnPositions:
+  - {x: 0, y: 0, z: 28}
+  - {x: 28, y: 0, z: 0}
+  - {x: -28, y: 0, z: 0}
+  - {x: 0, y: 0, z: -28}
