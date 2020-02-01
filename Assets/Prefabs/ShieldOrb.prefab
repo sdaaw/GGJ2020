@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   speed: 5
+  damage: 1
 --- !u!1 &4217844213691920698
 GameObject:
   m_ObjectHideFlags: 0

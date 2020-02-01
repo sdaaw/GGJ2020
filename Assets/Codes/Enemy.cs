@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public bool isEnabled;
 
     public bool AllowMovement;
+    private bool stop;
     public PlayerController pc;
     public float detectDistance;
     public float speed;
@@ -61,7 +62,7 @@ public class Enemy : MonoBehaviour
     {
         if (isMelee)
         {
-            if (chase && Vector3.Distance(transform.position, lastSeenSpot) >= 1)
+            if (chase && Vector3.Distance(transform.position, lastSeenSpot) >= 2 && !stop)
             {
                 Move((lastSeenSpot - transform.position).normalized);
 
@@ -71,7 +72,7 @@ public class Enemy : MonoBehaviour
                 if (pc != null)
                     transform.LookAt(pc.transform.position);
             }
-            else if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= 3)
+            else if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= 2)
             {
                 chase = false;
             }
@@ -89,24 +90,26 @@ public class Enemy : MonoBehaviour
                     if (curWeapon.GetType() == typeof(Sword))
                     {
                         Sword sword = (Sword)curWeapon;
-                        if(sword.swingTimer <= 0)
+                        if (sword.swingTimer <= 0)
                         {
+                            stop = true;
                             sword.Swing();
 
                             if (m_anim != null)
                             {
-                                int rnd = Random.Range(0, 1);
-                                if(rnd == 0)
+                                int rnd = Random.Range(0, 2);
+                                if (rnd == 0)
                                 {
                                     m_anim.SetTrigger("Melee1");
                                 }
-                                else if(rnd == 1)
+                                else if (rnd == 1)
                                 {
                                     m_anim.SetTrigger("Melee2");
                                 }
                             }
-                                
-                        }  
+                        }
+                        else
+                            stop = false;
                     }
                 }
             }

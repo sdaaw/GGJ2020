@@ -30,10 +30,11 @@ public class ShieldOrb : MonoBehaviour
             if (other.gameObject.layer != 8)
             {
                 if (other.GetComponent<Stats>())
+                {
                     other.GetComponent<Stats>().TakeDmg(damage);
-
-                //play particle
-                Destroy(gameObject);
+                    //play particle
+                    Destroy(gameObject);
+                }
             }
         }
     }

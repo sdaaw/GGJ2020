@@ -44,7 +44,7 @@ public class Sword : Weapon
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.root != owner)
+        if(other.transform.root != owner && other.gameObject.layer != gameObject.layer)
         {
             if (other.GetComponent<Stats>() && canDealDamage)
             {
