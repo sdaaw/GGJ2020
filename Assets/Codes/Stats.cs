@@ -8,6 +8,10 @@ public class Stats : MonoBehaviour
     public float health;
     public float maxHealth;
 
+    private bool isDead;
+
+    public bool hasDeadAnim;
+
     private void Start()
     {
         rm = FindObjectOfType<Room>();
@@ -21,16 +25,60 @@ public class Stats : MonoBehaviour
             GetComponent<Enemy>().FlashHealthBar();
 
         health -= dmg;
-        if (health <= 0)
+        if (health <= 0 && !isDead)
             Dead();
     }
 
     public void Dead()
     {
+        isDead = true;
         //play dead animation
         //gg
-        if(rm != null)
+        if (rm != null)
             rm.EnemyList.Remove(gameObject);
+
+        if (!GetComponent<PlayerController>())
+            StartCoroutine(WaitDestroy());
+        else
+        {
+            GetComponentInChildren<Animator>().SetTrigger("Death");
+            GetComponent<PlayerController>().AllowMovement = false;
+
+            if (GetComponent<Gun>())
+                GetComponent<Gun>().enabled = false;
+
+            if (GetComponentInChildren<Sword>())
+                GetComponentInChildren<Sword>().enabled = false;
+        }
+    }
+
+    IEnumerator WaitDestroy()
+    {
+        if(GetComponentInChildren<Animator>())
+        {
+            if(hasDeadAnim)
+                GetComponentInChildren<Animator>().SetTrigger("Death");
+            else
+            {
+                //TODO: spawn dead explosion
+            }
+        }
+           
+
+        if (GetComponent<Enemy>())
+            GetComponent<Enemy>().AllowMovement = false;
+
+        if (GetComponent<Gun>())
+            GetComponent<Gun>().enabled = false;
+
+        if (GetComponentInChildren<Sword>())
+            GetComponentInChildren<Sword>().enabled = false;
+
+        if(hasDeadAnim)
+            yield return new WaitForSeconds(4);
+        else
+            yield return new WaitForSeconds(0.1f);
+
         Destroy(gameObject);
     }
 }

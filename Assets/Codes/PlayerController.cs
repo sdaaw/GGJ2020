@@ -103,6 +103,8 @@ public class PlayerController : MonoBehaviour
             if(CurWeapon.GetType() == typeof(Gun))
             {
                 ((Gun)CurWeapon).Shoot(m_transform);
+                if (m_anim != null)
+                    m_anim.SetTrigger("Shoot");
             }
             else if(CurWeapon.GetType() == typeof(Sword))
             {
@@ -121,6 +123,8 @@ public class PlayerController : MonoBehaviour
             if (CurWeapon.GetType() == typeof(Gun))
             {
                 ((Gun)CurWeapon).Shoot(m_transform);
+                if (m_anim != null)
+                    m_anim.SetTrigger("Shoot2");
             }
             else if (CurWeapon.GetType() == typeof(Sword))
             {
