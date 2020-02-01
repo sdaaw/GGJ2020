@@ -23,8 +23,8 @@ public class CameraFollow : MonoBehaviour
 
     public bool dontFollow;
 
-    [SerializeField]
-    private Transform m_follow;
+    
+    public Transform m_follow;
 
     [SerializeField]
     private float m_distance;
