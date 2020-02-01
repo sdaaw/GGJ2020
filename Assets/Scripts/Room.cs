@@ -23,6 +23,8 @@ public class Room : MonoBehaviour
 
     private GameObject player;
 
+    public float randPropScale;
+
     //TODO: Events
     public bool avoidanceEvent = false;
     public bool isRoomClear = false;
@@ -41,6 +43,7 @@ public class Room : MonoBehaviour
 
     void Start()
     {
+        randPropScale = Random.Range(0.2f, 0.5f);
         //to distribute the level without overlapping because of the size
         m_camera = FindObjectOfType<Camera>();
         RoomSize *= FloorPrefab.transform.localScale.x;
@@ -63,11 +66,12 @@ public class Room : MonoBehaviour
                     Renderer rend2;
                     GameObject b = Instantiate(bushPrefab, new Vector3(
                         Random.Range(1, 45),
-                        Random.Range(0.5f, 1),
+                        0.5f,
                         Random.Range(1, 45)), Quaternion.identity);
 
+                    PropList.Add(b);
                     float randScale = Random.Range(0.6f, 1f);
-                    b.transform.localScale = new Vector3(randScale, randScale, randScale);
+                    b.transform.localScale = new Vector3(0, 0, 0);
                     rend2 = b.GetComponentInChildren<Renderer>();
                     rend2.material.color = new Color(Random.Range(0.2f, 0.5f), 0, Random.Range(0.1f, 0.3f));
 
@@ -209,6 +213,18 @@ public class Room : MonoBehaviour
                     block.transform.position.z), block.GetComponent<Block>().spawnSpeed);
             }
             StartCoroutine(CancelSpawnMovement());
+        } else
+        {
+            foreach (GameObject prop in PropList)
+            {
+
+                prop.transform.localScale = Vector3.Slerp(prop.transform.localScale, new Vector3(
+                    prop.GetComponent<Prop>().randomScale,
+                    prop.GetComponent<Prop>().randomScale,
+                    prop.GetComponent<Prop>().randomScale),
+                    0.01f
+                    );
+            }
         }
         if(Input.GetKeyUp(KeyCode.Space))
         {
@@ -246,6 +262,14 @@ public class Room : MonoBehaviour
             rend.material.color = new Color(Random.Range(0.03f, 0.05f), Random.Range(0.3f, 0.5f), Random.Range(0.005f, 0.015f));
 
             yield return new WaitForSeconds(0.001f);
+        }
+
+        foreach (GameObject prop in PropList)
+        {
+            rend = prop.GetComponentInChildren<Renderer>();
+            rend.material.color = new Color(Random.Range(0.03f, 0.05f), Random.Range(0.3f, 0.5f), Random.Range(0.005f, 0.015f));
+
+            yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(0.5f);
         SwitchRoom(); //use this to switch room
