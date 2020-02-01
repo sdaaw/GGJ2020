@@ -139,7 +139,7 @@ public class Room : MonoBehaviour
         yield return new WaitForSeconds(0.1f); //a small delay so the player spawns xD
         player.GetComponent<PlayerController>().AllowMovement = false;
         yield return new WaitForSeconds(3f);
-        int enemyCount = Random.Range(5, 10);
+        int enemyCount = Random.Range(2, 5);
         for (int i = 0; i < enemyCount; i++)
         {
             SetEnemies();
