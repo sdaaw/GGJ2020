@@ -43,6 +43,15 @@ public class PlayerController : MonoBehaviour
 
     public Weapon CurWeapon;
 
+    public Sprite[] playerHps;
+    public Image playerHp;
+    private Canvas m_playerUI;
+
+    public Image playerDash;
+    private float dashTimerForUI;
+
+    private Stats m_stats;
+
 
     public bool HasGun
     {
@@ -73,11 +82,25 @@ public class PlayerController : MonoBehaviour
         m_allowDash = true;
         m_playerCamera = FindObjectOfType<Camera>();
         m_anim = GetComponentInChildren<Animator>();
+        m_stats = GetComponent<Stats>();
+
+        Canvas[] cvs = FindObjectsOfType<Canvas>();
+        for(int i = 0; i < cvs.Length; i++)
+        {
+            if (cvs[i].name == "PlayerUI")
+            {
+                m_playerUI = cvs[i];
+                break;
+            }   
+        }
+
+        playerHp = m_playerUI.transform.GetChild(0).GetComponent<Image>();
+        playerDash = m_playerUI.transform.GetChild(1).GetComponent<Image>();
     }
 
     private void Start()
     {
-        AddShieldOrbs(5);
+        AddShieldOrbs(3);
     }
 
     void FixedUpdate()
@@ -97,10 +120,18 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             if(m_allowDash)
+            {
                 StartCoroutine(Dash());
+                dashTimerForUI = 0;
+            }     
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0) && CurWeapon != null)
+        if (dashTimerForUI < dashCooldown)
+            dashTimerForUI += Time.deltaTime;
+
+        UpdateDashImage();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CurWeapon != null)
         {
             //check all weapons here
             if(CurWeapon.GetType() == typeof(Gun))
@@ -236,5 +267,16 @@ public class PlayerController : MonoBehaviour
             so.owner = m_transform;
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public void UpdateHealthImage()
+    {
+        int hp = (int)m_stats.health;
+        playerHp.sprite = playerHps[hp - 1];
+    }
+
+    public void UpdateDashImage()
+    {
+        playerDash.fillAmount = dashTimerForUI / dashCooldown;
     }
 }

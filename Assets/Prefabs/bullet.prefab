@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030967b3cc7d4e241b9daed84a73fb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 25
+  dmg: 1
   isActive: 0
 --- !u!54 &4011611331204956683
 Rigidbody:

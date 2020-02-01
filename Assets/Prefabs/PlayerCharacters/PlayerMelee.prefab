@@ -47,10 +47,9 @@ GameObject:
   - component: {fileID: 8984004113760615286}
   - component: {fileID: 8984004113760615289}
   - component: {fileID: 8984004113760615282}
-  - component: {fileID: 708699070}
   - component: {fileID: 2039683939}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,6 +162,9 @@ MonoBehaviour:
   soPrefab: {fileID: 4193753465597057874, guid: 390fd8e8a5770864dbe8ba3be3b61f8c,
     type: 3}
   CurWeapon: {fileID: 534020329}
+  playerHps: []
+  playerHp: {fileID: 0}
+  playerDash: {fileID: 0}
 --- !u!54 &8984004113760615282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,26 +181,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &708699070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8984004113760615288}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031ec4e700073ce4886f30572f4159ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
-  owner: {fileID: 0}
-  m_bulletPrefab: {fileID: 5925294661424371884, guid: 7a649b98e651a0047bc0762eb1fa5df0,
-    type: 3}
-  bulletVelocity: 25
-  canShoot: 1
-  shootDelay: 0.25
-  upgradeLvl: 1
 --- !u!114 &2039683939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,8 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bb9e2676ae929418079d0f6008a867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 0
+  health: 4
+  maxHealth: 4
+  hasDeadAnim: 0
 --- !u!1001 &6340570983963202305
 PrefabInstance:
   m_ObjectHideFlags: 0

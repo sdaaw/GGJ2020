@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
         //its not our player (cant shoot itself)
         if(other.transform != owner)
         {
-            //its a bullet
+            //its not a bullet
             if(other.gameObject.layer != 8)
             {
                 if (other.GetComponent<Stats>())

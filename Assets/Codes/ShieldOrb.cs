@@ -7,6 +7,7 @@ public class ShieldOrb : MonoBehaviour
     public Transform owner;
     public float speed;
     private float angle;
+    public float damage;
 
     private void Update()
     {
@@ -29,17 +30,11 @@ public class ShieldOrb : MonoBehaviour
             if (other.gameObject.layer != 8)
             {
                 if (other.GetComponent<Stats>())
-                    other.GetComponent<Stats>().TakeDmg(25);
+                    other.GetComponent<Stats>().TakeDmg(damage);
 
-                //play particle
-                Destroy(gameObject);
-            }
-            else
-            {
                 //play particle
                 Destroy(gameObject);
             }
         }
-
     }
 }

@@ -20,9 +20,13 @@ public class Stats : MonoBehaviour
     public void TakeDmg(float dmg)
     {
         //particle effect/flash
+        if (isDead)
+            return;
 
         if (GetComponent<Enemy>())
             GetComponent<Enemy>().FlashHealthBar();
+        else if (GetComponent<PlayerController>())
+            GetComponent<PlayerController>().UpdateHealthImage();
 
         health -= dmg;
         if (health <= 0 && !isDead)
@@ -32,8 +36,7 @@ public class Stats : MonoBehaviour
     public void Dead()
     {
         isDead = true;
-        //play dead animation
-        //gg
+
         if (rm != null)
             rm.EnemyList.Remove(gameObject);
 
