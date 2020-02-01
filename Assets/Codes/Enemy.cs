@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     public bool isRanged;
     public float escapeDistance;
 
+    private Animator m_anim;
+
     public bool HasGun
     {
         get
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
         m_stats = GetComponent<Stats>();
         m_cam = FindObjectOfType<Camera>();
         m_barStartColor = healthBar.colors.normalColor;
+        m_anim = GetComponentInChildren<Animator>();
     }
 
     public void Update()
@@ -49,6 +52,9 @@ public class Enemy : MonoBehaviour
             DoLogic();
             UpdateHealthBar();
             Shoot();
+
+            if (m_anim != null)
+                m_anim.SetFloat("Speed", Mathf.Abs( (lastSeenSpot - transform.position).magnitude ));
         }    
     }
 
@@ -59,7 +65,8 @@ public class Enemy : MonoBehaviour
             if (chase && Vector3.Distance(transform.position, lastSeenSpot) >= 1)
             {
                 Move((lastSeenSpot - transform.position).normalized);
-                transform.LookAt(pc.transform.position);
+                if(pc != null)
+                    transform.LookAt(pc.transform.position);
             }
             else if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= 1)
             {
@@ -72,7 +79,8 @@ public class Enemy : MonoBehaviour
         }
         else if (isRanged)
         {
-            transform.LookAt(pc.transform.position);
+            if(pc != null)
+                transform.LookAt(pc.transform.position);
 
             if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= escapeDistance)
             {
