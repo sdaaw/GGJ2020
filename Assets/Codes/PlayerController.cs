@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     public ShieldOrb soPrefab;
 
+    private Animator m_anim;
+
 
     public bool HasGun
     {
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody>();
         m_allowDash = true;
         m_playerCamera = FindObjectOfType<Camera>();
+        m_anim = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -81,11 +84,6 @@ public class PlayerController : MonoBehaviour
         {
             DoMovement();
             Rotate((MouseDir() - m_transform.position).normalized);
-        }
-           
-        if (animator != null)
-        {
-            animator.SetFloat("speed", m_rigidbody.velocity.magnitude);
         }
     }
 
@@ -105,6 +103,10 @@ public class PlayerController : MonoBehaviour
                 GetComponent<Gun>().Shoot(m_transform);
             }
         }
+
+        //Debug.Log(m_move);
+        if(m_anim != null)
+            m_anim.SetFloat("Speed", Mathf.Abs(m_move.magnitude) );
     }
 
     void DoMovement()

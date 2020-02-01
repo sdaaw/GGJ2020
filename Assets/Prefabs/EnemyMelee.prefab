@@ -609,7 +609,7 @@ MonoBehaviour:
   AllowMovement: 1
   pc: {fileID: 0}
   detectDistance: 25
-  speed: 5
+  speed: 3.5
   chase: 0
   detectLayer:
     serializedVersion: 2
