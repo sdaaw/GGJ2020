@@ -19,6 +19,17 @@ public class Room : MonoBehaviour
 
     private GameObject playerPrefab;
 
+    public Color repairedColor;
+    public Color corruptedColor;
+
+    public float corruptedColorVariationR;
+    public float corruptedColorVariationG;
+    public float corruptedColorVariationB;
+
+    public float colorVariationR;
+    public float colorVariationG;
+    public float colorVariationB;
+
     public GameObject dangerPrefab;
     public GameObject avoidanceManager;
     public GameObject enemyPrefab;
@@ -101,7 +112,9 @@ public class Room : MonoBehaviour
                 }
 
                 rend = a.GetComponent<Renderer>();
-                rend.material.color = new Color(Random.Range(0.2f, 0.5f), 0, Random.Range(0.1f, 0.3f));
+                rend.material.color = new Color(corruptedColor.r + Random.Range(-corruptedColorVariationR, corruptedColorVariationR), 
+                    corruptedColor.g + Random.Range(-corruptedColorVariationG, corruptedColorVariationG), 
+                    corruptedColor.b + Random.Range(-corruptedColorVariationB, corruptedColorVariationB));
                 RoomFloor.Add(a);
             }
         }
@@ -291,7 +304,10 @@ public class Room : MonoBehaviour
         foreach (GameObject block in RoomFloor)
         {
             rend = block.GetComponent<Renderer>();
-            rend.material.color = new Color(Random.Range(0.03f, 0.05f), Random.Range(0.3f, 0.5f), Random.Range(0.005f, 0.015f));
+            rend.material.color = new Color(
+                repairedColor.r + Random.Range(-colorVariationR, colorVariationR), 
+                repairedColor.g + Random.Range(-colorVariationG, colorVariationG),
+                repairedColor.b + Random.Range(-colorVariationB, colorVariationB));
 
             yield return new WaitForSeconds(0.001f);
         }
@@ -299,7 +315,10 @@ public class Room : MonoBehaviour
         foreach (GameObject prop in PropList)
         {
             rend = prop.GetComponentInChildren<Renderer>();
-            rend.material.color = new Color(Random.Range(0.03f, 0.05f), Random.Range(0.3f, 0.5f), Random.Range(0.005f, 0.015f));
+            rend.material.color = new Color(
+                repairedColor.r + Random.Range(-colorVariationR, colorVariationR),
+                repairedColor.g + Random.Range(-colorVariationG, colorVariationG),
+                repairedColor.b + Random.Range(-colorVariationB, colorVariationB));
 
             yield return new WaitForSeconds(0.01f);
         }
