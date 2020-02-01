@@ -217,6 +217,8 @@ MonoBehaviour:
   dashCooldown: 0.5
   clips: []
   bgMusic: {fileID: 0}
+  soPrefab: {fileID: 4193753465597057874, guid: 390fd8e8a5770864dbe8ba3be3b61f8c,
+    type: 3}
 --- !u!54 &8984004113760615282
 Rigidbody:
   m_ObjectHideFlags: 0

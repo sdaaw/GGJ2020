@@ -7,6 +7,8 @@ public class Block : MonoBehaviour
 
     public bool isBlock;
     public bool isSpawn;
+    public bool isDmg;
+
     public float exitSpeed;
     public float spawnSpeed;
 
