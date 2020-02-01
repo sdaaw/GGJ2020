@@ -50,9 +50,9 @@ public class Room : MonoBehaviour
     void GenerateRoom()
     {
         Renderer rend;
-        for(float i = 0; i < RoomSize; i += FloorPrefab.transform.localScale.x)
+        for(float i = 0; i < RoomSize; i += 4)
         {
-            for (float j = 0; j < RoomSize; j += FloorPrefab.transform.localScale.x)
+            for (float j = 0; j < RoomSize; j += 4)
             {
                 GameObject a = Instantiate(FloorPrefab.gameObject, new Vector3(i, 15, j), Quaternion.identity);
 
@@ -167,16 +167,16 @@ public class Room : MonoBehaviour
             {
                 block.transform.position = Vector3.Lerp(block.transform.position, new Vector3(
                     block.transform.position.x,
-                    30, 
+                    40, 
                     block.transform.position.z), block.GetComponent<Block>().exitSpeed);
 
-                rend = block.GetComponent<Renderer>();
+                /*rend = block.GetComponent<Renderer>();
                 rend.material.color = new Color(
                     Mathf.Lerp(rend.material.color.r, 0.05f, 0.005f),
                     Mathf.Lerp(rend.material.color.g, 0.4f, 0.007f),
                     Mathf.Lerp(rend.material.color.b, 0.01f, 0.002f),
                     Mathf.Lerp(rend.material.color.a, 0f, 0.002f)
-                    );
+                    );*/
             }
         }
 

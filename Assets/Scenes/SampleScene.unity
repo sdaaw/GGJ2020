@@ -317,7 +317,7 @@ PrefabInstance:
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: RoomSize
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}

@@ -12,11 +12,18 @@ public class Block : MonoBehaviour
     public float exitSpeed;
     public float spawnSpeed;
 
+    public Texture corruptedTexture;
 
     public void Start()
     {
+        if(isBlock)
+        {
+            //change texture pls
+            Renderer r;
+            r = gameObject.GetComponent<Renderer>();
+        }
         exitSpeed = Random.Range(0.008f, 0.015f);
-        spawnSpeed = Random.Range(0.03f, 0.06f);
+        spawnSpeed = Random.Range(0.01f, 0.03f);
     }
 
 }
