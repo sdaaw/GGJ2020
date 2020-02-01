@@ -162,7 +162,13 @@ MonoBehaviour:
   soPrefab: {fileID: 4193753465597057874, guid: 390fd8e8a5770864dbe8ba3be3b61f8c,
     type: 3}
   CurWeapon: {fileID: 534020329}
-  playerHps: []
+  playerHps:
+  - {fileID: 21300000, guid: 88d896032fad55141aefa653be0acc7f, type: 3}
+  - {fileID: 21300000, guid: 4523af5bd07ef724e9804e6006623105, type: 3}
+  - {fileID: 21300000, guid: d916fd9e96ffa054ebd0731dec43521a, type: 3}
+  - {fileID: 21300000, guid: 8bf28ce85c32447478f24aa0dc1a9834, type: 3}
+  - {fileID: 21300000, guid: f5393e2f2e6807d41bd83a1eb57d55eb, type: 3}
+  - {fileID: 21300000, guid: 191287d0a3bbbe7498d87e97912d5f3f, type: 3}
   playerHp: {fileID: 0}
   playerDash: {fileID: 0}
 --- !u!54 &8984004113760615282

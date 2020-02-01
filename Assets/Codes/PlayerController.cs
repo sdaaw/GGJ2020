@@ -131,47 +131,54 @@ public class PlayerController : MonoBehaviour
 
         UpdateDashImage();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && CurWeapon != null)
+        //SHOOTING & SPELLS
+        if (CurWeapon.GetType() == typeof(Gun))
         {
-            //check all weapons here
-            if(CurWeapon.GetType() == typeof(Gun))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && CurWeapon != null)
             {
                 ((Gun)CurWeapon).Shoot(m_transform);
                 if (m_anim != null)
                     m_anim.SetTrigger("Shoot");
+               
             }
-            else if(CurWeapon.GetType() == typeof(Sword))
+
+            if (Input.GetKeyDown(KeyCode.Mouse1) && CurWeapon != null)
+            {
+                //TODO: Implement aoe shoot thing
+               ((Gun)CurWeapon).Shoot(m_transform);
+                if (m_anim != null)
+                    m_anim.SetTrigger("Shoot2");    
+            }
+        }
+        //MELEE
+        else if (CurWeapon.GetType() == typeof(Sword))
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0) && CurWeapon != null)
             {
                 Sword sword = (Sword)CurWeapon;
                 if (m_anim != null && sword.canMelee)
                 {
                     sword.Swing();
                     m_anim.SetTrigger("Swing1");
-                }     
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1) && CurWeapon != null)
-        {
-            //check all weapons here
-            if (CurWeapon.GetType() == typeof(Gun))
-            {
-                ((Gun)CurWeapon).Shoot(m_transform);
-                if (m_anim != null)
-                    m_anim.SetTrigger("Shoot2");
-            }
-            else if (CurWeapon.GetType() == typeof(Sword))
-            {
-                Sword sword = (Sword)CurWeapon;
-                if (m_anim != null && sword.canMelee)
-                {
-                    sword.Swing();
-                    m_anim.SetTrigger("Swing2");
                 }
             }
+
+            //press
+            if (Input.GetKeyDown(KeyCode.Mouse1) && CurWeapon != null)
+            {
+                Sword sword = (Sword)CurWeapon;
+                sword.canDealDamage = true;
+                m_anim.SetBool("bladestorm", true);
+            }
+            //release
+            if (Input.GetKeyUp(KeyCode.Mouse1) && CurWeapon != null)
+            {
+                Sword sword = (Sword)CurWeapon;
+                sword.canDealDamage = false;
+                m_anim.SetBool("bladestorm", false);
+            }
         }
 
-        //Debug.Log(m_move);
         if (m_anim != null)
             m_anim.SetFloat("Speed", Mathf.Abs(m_move.magnitude) );
     }
