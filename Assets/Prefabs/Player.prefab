@@ -250,3 +250,4 @@ MonoBehaviour:
   bulletVelocity: 25
   canShoot: 1
   shootDelay: 0.25
+  upgradeLvl: 1

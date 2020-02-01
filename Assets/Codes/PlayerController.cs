@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     public List<AudioClip> clips = new List<AudioClip>();
     public AudioSource bgMusic;
 
+    public ShieldOrb soPrefab;
+
 
     public bool HasGun
     {
@@ -58,12 +60,17 @@ public class PlayerController : MonoBehaviour
             bgMusic.Play();
     }
 
-    void Awake()
+    private void Awake()
     {
         m_transform = transform;
         m_rigidbody = GetComponent<Rigidbody>();
         m_allowDash = true;
         m_playerCamera = FindObjectOfType<Camera>();
+    }
+
+    private void Start()
+    {
+        AddShieldOrbs(5);
     }
 
     void FixedUpdate()
@@ -174,5 +181,21 @@ public class PlayerController : MonoBehaviour
         m_mousePos.z = Camera.main.WorldToScreenPoint(m_transform.position).z;
 
         return Camera.main.ScreenToWorldPoint(m_mousePos);
+    }
+
+    //TODO: Move to pickup
+    public void AddShieldOrbs(int amount)
+    {
+        StartCoroutine(WaitSpawnShieldOrbs(amount));
+    }
+
+    private IEnumerator WaitSpawnShieldOrbs(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            ShieldOrb so = Instantiate(soPrefab, m_transform);
+            so.owner = m_transform;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

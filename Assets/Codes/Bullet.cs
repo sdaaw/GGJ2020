@@ -37,20 +37,9 @@ public class Bullet : MonoBehaviour
         if(other.transform != owner)
         {
             //its a bullet
-            if(other.transform.GetComponent<Bullet>())
-            {
-                //its not fired by us
-                if(other.transform.GetComponent<Bullet>().owner != owner)
-                {
-                    //TODO: deal dmg or destroy other bullet
-                    Destroy(gameObject);
-                }
-            }
-            else
+            if(other.gameObject.layer != 8)
             {
                 //TODO: deal dmg to target if possible
-
-                
                 Destroy(gameObject);
             }
         }      
