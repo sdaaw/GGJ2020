@@ -24,6 +24,9 @@ ModelImporter:
   - first:
       74: 1679763308670167783
     second: Armature|Attack3
+  - first:
+      74: 4782110045871339260
+    second: Armature|Meatspin
   externalObjects: {}
   materials:
     materialImportMode: 1
