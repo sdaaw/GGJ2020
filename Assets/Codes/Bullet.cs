@@ -8,12 +8,14 @@ public class Bullet : MonoBehaviour
     public bool isActive;
     private float speed;
     private Vector3 dir;
+    private Transform owner;
 
 
-    public void Activate(float speed, Vector3 dir, float dmg)
+    public void Activate(float speed, Vector3 dir, Transform owner, float dmg)
     {
         this.speed = speed;
         this.dir = dir;
+        this.owner = owner;
 
         if (dmg > 0)
             this.dmg = dmg;
@@ -31,7 +33,26 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(this);
-    }
+        //its not our player (cant shoot itself)
+        if(other.transform != owner)
+        {
+            //its a bullet
+            if(other.transform.GetComponent<Bullet>())
+            {
+                //its not fired by us
+                if(other.transform.GetComponent<Bullet>().owner != owner)
+                {
+                    //TODO: deal dmg or destroy other bullet
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                //TODO: deal dmg to target if possible
 
+                
+                Destroy(gameObject);
+            }
+        }      
+    }
 }
