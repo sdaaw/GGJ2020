@@ -97,7 +97,7 @@ public class Room : MonoBehaviour
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.x, 
             1,
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.z), Quaternion.identity);
-        a.GetComponent<EnemyMelee>().AllowMovement = true;
+        a.GetComponent<Enemy>().AllowMovement = true;
         EnemyList.Add(a);
     }
 
