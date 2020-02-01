@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
 
     private Animator m_anim;
 
+    public Weapon curWeapon;
+
     public bool HasGun
     {
         get
@@ -76,6 +78,38 @@ public class Enemy : MonoBehaviour
             {
                 //do idle or move untill wall or something
             }
+
+
+            if(Vector3.Distance(transform.position, pc.transform.position) <= 2)
+            {
+                if (curWeapon != null)
+                {
+                    if (curWeapon.GetType() == typeof(Sword))
+                    {
+                        Sword sword = (Sword)curWeapon;
+                        if(sword.swingTimer <= 0)
+                        {
+                            sword.Swing();
+
+                            if (m_anim != null)
+                            {
+                                int rnd = Random.Range(0, 1);
+                                if(rnd == 0)
+                                {
+                                    m_anim.SetTrigger("Melee1");
+                                }
+                                else if(rnd == 1)
+                                {
+                                    m_anim.SetTrigger("Melee2");
+                                }
+                            }
+                                
+                        }  
+                    }
+                }
+            }
+
+
         }
         else if (isRanged)
         {
