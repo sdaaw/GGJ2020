@@ -13,6 +13,7 @@ public class PickUp : MonoBehaviour
         if(other.GetComponent<PlayerController>())
         {
             PlayerController pc = other.GetComponent<PlayerController>();
+            Stats stats = pc.GetComponent<Stats>();
 
             switch (type)
             {
@@ -20,14 +21,25 @@ public class PickUp : MonoBehaviour
                     pc.AddShieldOrbs((int)value);
                     break;
                 case PickUpType.Heal:
-                    //heal
+                    stats.health += value;
+                    if (stats.health > stats.maxHealth)
+                        stats.health = stats.maxHealth;
+                    pc.UpdateHealthImage();
                     break;
                 case PickUpType.HPUpgrade:
-                    //upgrade max hp and heal to full
+                    stats.maxHealth += value;
+                    //hardcapped at 6 hp
+                    if (stats.maxHealth > 6)
+                        stats.maxHealth = 6;  
+                    stats.health = stats.maxHealth;
+                    pc.UpdateHealthImage();
                     break;
                 case PickUpType.GunUpgrade:
                     if (pc.GetComponent<Gun>())
-                        pc.GetComponent<Gun>().upgradeLvl = 1;
+                        pc.GetComponent<Gun>().upgradeLvl = (int)value;
+                    break;
+                case PickUpType.Shield:
+                    //TODO: Implement shield
                     break;
             }
 
@@ -43,5 +55,6 @@ public enum PickUpType
     Heal,
     HPUpgrade,
     OrbShield,
-    GunUpgrade
+    GunUpgrade,
+    Shield
 };

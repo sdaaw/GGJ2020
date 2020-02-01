@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
             }
 
 
-            if(Vector3.Distance(transform.position, pc.transform.position) <= 3)
+            if(Vector3.Distance(transform.position, pc.transform.position) <= 2)
             {
                 if (curWeapon != null)
                 {
