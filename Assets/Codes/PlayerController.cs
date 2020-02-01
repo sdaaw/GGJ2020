@@ -91,6 +91,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!AllowMovement)
+            return;
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             if(m_allowDash)
@@ -220,7 +223,6 @@ public class PlayerController : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(m_mousePos);
     }
 
-    //TODO: Move to pickup
     public void AddShieldOrbs(int amount)
     {
         StartCoroutine(WaitSpawnShieldOrbs(amount));
