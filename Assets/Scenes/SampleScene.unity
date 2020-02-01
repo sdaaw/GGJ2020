@@ -289,13 +289,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.18042524, y: -0, z: -0, w: 0.98358876}
-  m_LocalPosition: {x: 3.3, y: 8, z: -11.6}
+  m_LocalRotation: {x: 0.37314418, y: -0, z: -0, w: 0.92777336}
+  m_LocalPosition: {x: 3.3, y: 14.38, z: -6.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.789001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 43.819, y: 0, z: 0}
 --- !u!1001 &5597576481309902528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,6 +307,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 8984004113760615288, guid: 4702c7626b406e24e84e795ad184e26d,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: RoomSize
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
