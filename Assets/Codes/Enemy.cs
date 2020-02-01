@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class EnemyMelee : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public bool isEnabled;
 
@@ -22,12 +22,27 @@ public class EnemyMelee : MonoBehaviour
     public Slider healthBar;
     private Color m_barStartColor;
 
+    public bool isMelee;
+    public bool isRanged;
+    public float escapeDistance;
+
+    private Animator m_anim;
+
+    public bool HasGun
+    {
+        get
+        {
+            return GetComponent<Gun>() != null;
+        }
+    }
+
     private void Start()
     {
         pc = FindObjectOfType<PlayerController>();
         m_stats = GetComponent<Stats>();
         m_cam = FindObjectOfType<Camera>();
         m_barStartColor = healthBar.colors.normalColor;
+        m_anim = GetComponentInChildren<Animator>();
     }
 
     public void Update()
@@ -36,25 +51,49 @@ public class EnemyMelee : MonoBehaviour
         {
             DoLogic();
             UpdateHealthBar();
+            Shoot();
+
+            if (m_anim != null)
+                m_anim.SetFloat("Speed", Mathf.Abs( (lastSeenSpot - transform.position).magnitude ));
         }    
     }
 
     public void FixedUpdate()
     {
-        if(chase && Vector3.Distance(transform.position, lastSeenSpot) >= 1)
+        if (isMelee)
         {
-            //ranged enemy ai?
-            //Move((transform.position - lastSeenSpot).normalized);
+            if (chase && Vector3.Distance(transform.position, lastSeenSpot) >= 1)
+            {
+                Move((lastSeenSpot - transform.position).normalized);
+                if(pc != null)
+                    transform.LookAt(pc.transform.position);
+            }
+            else if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= 1)
+            {
+                chase = false;
+            }
+            else
+            {
+                //do idle or move untill wall or something
+            }
+        }
+        else if (isRanged)
+        {
+            if(pc != null)
+                transform.LookAt(pc.transform.position);
 
-            Move((lastSeenSpot - transform.position).normalized);
-        }
-        else if(chase && Vector3.Distance(transform.position, lastSeenSpot) <= 1)
-        {
-            chase = false;
-        }
-        else
-        {
-            //do idle or move untill wall or something
+            if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= escapeDistance)
+            {
+                Move((transform.position - lastSeenSpot).normalized);
+            }
+            else if (chase && Vector3.Distance(transform.position, lastSeenSpot) >= escapeDistance)
+            {
+                chase = false;
+            }
+            else
+            {
+                //do idle or move untill wall or something
+            }
         }
     }
 
@@ -62,6 +101,15 @@ public class EnemyMelee : MonoBehaviour
     {
         if(pc != null)
             CheckForPlayer();
+    }
+
+    public void Shoot()
+    {
+        if(isRanged && HasGun)
+        {
+            if (GetComponent<Gun>().canShoot)
+                GetComponent<Gun>().Shoot(transform);
+        }
     }
 
     public void CheckForPlayer()

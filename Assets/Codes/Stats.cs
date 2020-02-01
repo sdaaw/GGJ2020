@@ -17,8 +17,8 @@ public class Stats : MonoBehaviour
     {
         //particle effect/flash
 
-        if (GetComponent<EnemyMelee>())
-            GetComponent<EnemyMelee>().FlashHealthBar();
+        if (GetComponent<Enemy>())
+            GetComponent<Enemy>().FlashHealthBar();
 
         health -= dmg;
         if (health <= 0)
