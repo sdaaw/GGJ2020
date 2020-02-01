@@ -5,9 +5,15 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     public float health;
+    public float maxHealth;
 
     public void TakeDmg(float dmg)
     {
+        //particle effect/flash
+
+        if (GetComponent<EnemyMelee>())
+            GetComponent<EnemyMelee>().FlashHealthBar();
+
         health -= dmg;
         if (health <= 0)
             Dead();
