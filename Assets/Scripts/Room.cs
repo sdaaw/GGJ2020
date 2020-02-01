@@ -14,7 +14,11 @@ public class Room : MonoBehaviour
     private List<GameObject> PropList = new List<GameObject>();
     public List<GameObject> EnemyList = new List<GameObject>();
 
-    public GameObject playerPrefab;
+    public GameObject playerRangedPrefab;
+    public GameObject playerMeleePrefab;
+
+    private GameObject playerPrefab;
+
     public GameObject dangerPrefab;
     public GameObject avoidanceManager;
     public GameObject enemyPrefab;
@@ -43,12 +47,24 @@ public class Room : MonoBehaviour
 
     void Start()
     {
+        if (Random.Range(0, 100) > 50)
+        {
+            playerPrefab = playerMeleePrefab;
+            print("melee");
+        }
+        else
+        {
+            playerPrefab = playerRangedPrefab;
+            print("ranged");
+        }
         randPropScale = Random.Range(0.2f, 0.5f);
         //to distribute the level without overlapping because of the size
         m_camera = FindObjectOfType<Camera>();
         RoomSize *= FloorPrefab.transform.localScale.x;
         SpawnRoom();
         GenerateRoom();
+
+
     }
 
     void GenerateRoom()
@@ -110,7 +126,11 @@ public class Room : MonoBehaviour
 
         //m_camera.transform.position = new Vector3(SpawnTile.transform.position.x, 30, SpawnTile.transform.position.z - 8);
 
+        
         player = Instantiate(playerPrefab, SpawnTile.transform.position + Vector3.up, Quaternion.identity);
+
+
+        Camera.main.GetComponent<CameraFollow>().m_follow = player.transform;
     }
 
     void SetEnemies()
