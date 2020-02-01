@@ -747,6 +747,11 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8769254606013830241, guid: ab0994900d3c32448bef271a5cd1eab5,
+        type: 3}
+      propertyPath: isMelee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8769254606013830266, guid: ab0994900d3c32448bef271a5cd1eab5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1460,6 +1465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769254606013830241, guid: ab0994900d3c32448bef271a5cd1eab5,
+        type: 3}
+      propertyPath: isMelee
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8769254606013830266, guid: ab0994900d3c32448bef271a5cd1eab5,
         type: 3}

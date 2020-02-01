@@ -54,9 +54,6 @@ public class Enemy : MonoBehaviour
             DoLogic();
             UpdateHealthBar();
             Shoot();
-
-            if (m_anim != null)
-                m_anim.SetFloat("Speed", Mathf.Abs( (lastSeenSpot - transform.position).magnitude ));
         }    
     }
 
@@ -67,20 +64,25 @@ public class Enemy : MonoBehaviour
             if (chase && Vector3.Distance(transform.position, lastSeenSpot) >= 1)
             {
                 Move((lastSeenSpot - transform.position).normalized);
-                if(pc != null)
+
+                if (m_anim != null)
+                    m_anim.SetFloat("Speed", Mathf.Abs((lastSeenSpot - transform.position).normalized.magnitude));
+
+                if (pc != null)
                     transform.LookAt(pc.transform.position);
             }
-            else if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= 1)
+            else if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= 3)
             {
                 chase = false;
             }
             else
             {
                 //do idle or move untill wall or something
+                m_anim.SetFloat("Speed", 0);
             }
 
 
-            if(Vector3.Distance(transform.position, pc.transform.position) <= 2)
+            if(Vector3.Distance(transform.position, pc.transform.position) <= 3)
             {
                 if (curWeapon != null)
                 {
@@ -119,6 +121,8 @@ public class Enemy : MonoBehaviour
             if (chase && Vector3.Distance(transform.position, lastSeenSpot) <= escapeDistance)
             {
                 Move((transform.position - lastSeenSpot).normalized);
+                if (m_anim != null)
+                    m_anim.SetFloat("Speed", Mathf.Abs((lastSeenSpot - transform.position).normalized.magnitude));
             }
             else if (chase && Vector3.Distance(transform.position, lastSeenSpot) >= escapeDistance)
             {
@@ -127,6 +131,8 @@ public class Enemy : MonoBehaviour
             else
             {
                 //do idle or move untill wall or something
+                if (m_anim != null)
+                    m_anim.SetFloat("Speed", 0);
             }
         }
     }
