@@ -29,7 +29,8 @@ public class Stats : MonoBehaviour
     {
         //play dead animation
         //gg
-        rm.EnemyList.Remove(gameObject);
+        if(rm != null)
+            rm.EnemyList.Remove(gameObject);
         Destroy(gameObject);
     }
 }
