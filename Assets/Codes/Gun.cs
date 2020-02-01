@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : Weapon
 {
     [SerializeField]
     private GameObject m_bulletPrefab;
@@ -12,8 +12,6 @@ public class Gun : MonoBehaviour
 
     public float shootDelay;
     private float shootTimer;
-
-    public float damage;
 
     public int upgradeLvl;
 

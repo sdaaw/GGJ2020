@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &534020330
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956555743822786913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44822842, y: 0.016512608, z: 0.05485332}
+  m_Center: {x: 0.18545751, y: 0.004237355, z: 0.008467311}
+--- !u!114 &534020329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956555743822786913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039aad67fe9ea444b8f12749b2905177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 25
+  owner: {fileID: 8984004113760615285}
+  swingTimer: 0
+  swingTimerMax: 1
+  canMelee: 1
+  swingDuration: 0
+  maxSwingDuration: 0.5
+  canDealDamage: 0
 --- !u!1 &8984004113760615288
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,6 +48,7 @@ GameObject:
   - component: {fileID: 8984004113760615289}
   - component: {fileID: 8984004113760615282}
   - component: {fileID: 708699070}
+  - component: {fileID: 2039683939}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -128,6 +162,7 @@ MonoBehaviour:
   bgMusic: {fileID: 0}
   soPrefab: {fileID: 4193753465597057874, guid: 390fd8e8a5770864dbe8ba3be3b61f8c,
     type: 3}
+  CurWeapon: {fileID: 534020329}
 --- !u!54 &8984004113760615282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,18 +186,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984004113760615288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 031ec4e700073ce4886f30572f4159ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
+  owner: {fileID: 0}
   m_bulletPrefab: {fileID: 5925294661424371884, guid: 7a649b98e651a0047bc0762eb1fa5df0,
     type: 3}
   bulletVelocity: 25
   canShoot: 1
   shootDelay: 0.25
-  damage: 0
   upgradeLvl: 1
+--- !u!114 &2039683939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8984004113760615288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2bb9e2676ae929418079d0f6008a867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 0
 --- !u!1001 &6340570983963202305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -170,6 +220,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8984004113760615285}
     m_Modifications:
+    - target: {fileID: 571188838570140461, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00718
+      objectReference: {fileID: 0}
+    - target: {fileID: 571188838570140461, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00721
+      objectReference: {fileID: 0}
+    - target: {fileID: 571188838570140461, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00008
+      objectReference: {fileID: 0}
+    - target: {fileID: 571188838570140461, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5752111
+      objectReference: {fileID: 0}
+    - target: {fileID: 571188838570140461, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.0678535
+      objectReference: {fileID: 0}
+    - target: {fileID: 571188838570140461, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.57570624
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158339314020091495, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2108070512691358032, guid: bb894ab647f52b345ac70983160c0251,
         type: 3}
       propertyPath: m_Name
@@ -245,11 +330,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.125
       objectReference: {fileID: 0}
+    - target: {fileID: 3378327028253921517, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537508492187279968, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb894ab647f52b345ac70983160c0251, type: 3}
 --- !u!4 &8999384587207559234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3105802790294215491, guid: bb894ab647f52b345ac70983160c0251,
+    type: 3}
+  m_PrefabInstance: {fileID: 6340570983963202305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1956555743822786913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5537508492187279968, guid: bb894ab647f52b345ac70983160c0251,
     type: 3}
   m_PrefabInstance: {fileID: 6340570983963202305}
   m_PrefabAsset: {fileID: 0}

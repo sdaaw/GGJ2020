@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator m_anim;
 
+    public Weapon CurWeapon;
+
 
     public bool HasGun
     {
@@ -95,17 +97,44 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Dash());
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && CurWeapon != null)
         {
             //check all weapons here
-            if(HasGun)
+            if(CurWeapon.GetType() == typeof(Gun))
             {
-                GetComponent<Gun>().Shoot(m_transform);
+                ((Gun)CurWeapon).Shoot(m_transform);
+            }
+            else if(CurWeapon.GetType() == typeof(Sword))
+            {
+                Sword sword = (Sword)CurWeapon;
+                if (m_anim != null && sword.canMelee)
+                {
+                    sword.Swing();
+                    m_anim.SetTrigger("Swing1");
+                }     
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && CurWeapon != null)
+        {
+            //check all weapons here
+            if (CurWeapon.GetType() == typeof(Gun))
+            {
+                ((Gun)CurWeapon).Shoot(m_transform);
+            }
+            else if (CurWeapon.GetType() == typeof(Sword))
+            {
+                Sword sword = (Sword)CurWeapon;
+                if (m_anim != null && sword.canMelee)
+                {
+                    sword.Swing();
+                    m_anim.SetTrigger("Swing2");
+                }
             }
         }
 
         //Debug.Log(m_move);
-        if(m_anim != null)
+        if (m_anim != null)
             m_anim.SetFloat("Speed", Mathf.Abs(m_move.magnitude) );
     }
 
