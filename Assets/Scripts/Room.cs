@@ -19,6 +19,7 @@ public class Room : MonoBehaviour
     public GameObject avoidanceManager;
     public GameObject enemyPrefab;
     public GameObject wallPrefab;
+    public GameObject bushPrefab;
 
     private GameObject player;
 
@@ -54,7 +55,29 @@ public class Room : MonoBehaviour
         {
             for (float j = 0; j < RoomSize; j += 4)
             {
+
                 GameObject a = Instantiate(FloorPrefab.gameObject, new Vector3(i, 15, j), Quaternion.identity);
+
+                if(Random.Range(0, 10) > 8) 
+                {
+                    Renderer rend2;
+                    GameObject b = Instantiate(bushPrefab, new Vector3(
+                        Random.Range(1, 45),
+                        Random.Range(0.5f, 1),
+                        Random.Range(1, 45)), Quaternion.identity);
+
+                    float randScale = Random.Range(0.6f, 1f);
+                    b.transform.localScale = new Vector3(randScale, randScale, randScale);
+                    rend2 = b.GetComponentInChildren<Renderer>();
+                    rend2.material.color = new Color(Random.Range(0.2f, 0.5f), 0, Random.Range(0.1f, 0.3f));
+
+                }
+
+                if(Random.Range(0, 100) > 98)
+                {
+                    //powerup spawn
+
+                }
 
                 rend = a.GetComponent<Renderer>();
                 rend.material.color = new Color(Random.Range(0.2f, 0.5f), 0, Random.Range(0.1f, 0.3f));
@@ -74,21 +97,16 @@ public class Room : MonoBehaviour
             {
                 SetBlockTiles();
             }
-            int dmgTiles = 2;
-            for (int i = 0; i < dmgTiles; i++)
-            {
-                SetDmgTiles();
-            }
+            StartCoroutine(SpawnEnemies());
         }
         SpawnTile = RoomFloor[(RoomFloor.Count / 2)];
         Renderer spawnTileMat = SpawnTile.GetComponent<Renderer>();
         spawnTileMat.material.color = Color.blue;
         spawnRoom = true;
 
-        m_camera.transform.position = new Vector3(SpawnTile.transform.position.x, 30, SpawnTile.transform.position.z - 8);
+        //m_camera.transform.position = new Vector3(SpawnTile.transform.position.x, 30, SpawnTile.transform.position.z - 8);
 
         player = Instantiate(playerPrefab, SpawnTile.transform.position + Vector3.up, Quaternion.identity);
-        StartCoroutine(SpawnEnemies());
     }
 
     void SetEnemies()
@@ -103,6 +121,7 @@ public class Room : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
+        yield return new WaitForSeconds(0.1f); //a small delay so the player spawns xD
         player.GetComponent<PlayerController>().AllowMovement = false;
         yield return new WaitForSeconds(3f);
         int enemyCount = Random.Range(2, 5);
@@ -197,7 +216,7 @@ public class Room : MonoBehaviour
             {
                 StartCoroutine(RepairWorld());
             }
-            //avoidanceEvent = true;
+            avoidanceEvent = true;
         }
     }
 
