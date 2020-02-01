@@ -24,8 +24,8 @@ public class Block : MonoBehaviour
             Renderer r;
             r = gameObject.GetComponent<Renderer>();
         }
-        exitSpeed = Random.Range(0.008f, 0.015f);
-        spawnSpeed = Random.Range(0.01f, 0.03f);
+        exitSpeed = Random.Range(0.03f, 0.05f);
+        spawnSpeed = Random.Range(0.03f, 0.05f);
     }
 
 }

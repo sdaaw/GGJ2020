@@ -32,7 +32,7 @@ public class Room : MonoBehaviour
 
     public float RoomSize;
 
-    public float elevationFactor = 0.2f;
+    public float elevationFactor = 1f;
 
     private bool destroyRoom = false;
     private bool spawnRoom = false;
@@ -115,11 +115,22 @@ public class Room : MonoBehaviour
 
     void SetEnemies()
     {
+        Enemy e;
         GameObject a = Instantiate(enemyPrefab, new Vector3(
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.x, 
             1,
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.z), Quaternion.identity);
         a.GetComponent<Enemy>().AllowMovement = true;
+        e = a.GetComponent<Enemy>();
+        if(Random.Range(1, 10) > 7)
+        {
+            e.isRanged = true;
+            e.escapeDistance = Random.Range(5, 15);
+            
+        } else
+        {
+            e.isMelee = true;
+        }
         EnemyList.Add(a);
     }
 
@@ -285,7 +296,7 @@ public class Room : MonoBehaviour
     IEnumerator SpawnRoom()
     {
         
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         //if we want to save rooms
         //WorldFloors.Add(RoomFloor);
 

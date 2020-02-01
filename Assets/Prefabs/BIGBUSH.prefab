@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2238581096050084621}
   - component: {fileID: 3590756849282104800}
+  - component: {fileID: -6890636832696840209}
   m_Layer: 0
   m_Name: BIGBUSH
   m_TagString: Untagged
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.18, y: 3.13, z: 1.96}
   m_Center: {x: 0, y: 1.03, z: 0}
+--- !u!114 &-6890636832696840209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975279004206938398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29535a97a19d32c4b9829dc4502a39f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomScale: 0
 --- !u!1 &8738701616763788419
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +98,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738701616763788419}
-  m_Mesh: {fileID: -2432090755550338912, guid: be3d99bba0b11a04cb5603f75b1c9278, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 8d3e790d7d1b1314c90c28fa9a519d39, type: 3}
 --- !u!23 &296591240066211862
 MeshRenderer:
   m_ObjectHideFlags: 0
