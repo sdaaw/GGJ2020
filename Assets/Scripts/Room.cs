@@ -10,8 +10,8 @@ public class Room : MonoBehaviour
     //if we want to save rooms
     //public List<List<GameObject>> WorldFloors = new List<List<GameObject>>();
 
-    private List<GameObject> RoomFloor = new List<GameObject>();
-    private List<GameObject> PropList = new List<GameObject>();
+    public List<GameObject> RoomFloor = new List<GameObject>();
+    public List<GameObject> PropList = new List<GameObject>();
     public List<GameObject> EnemyList = new List<GameObject>();
 
     public GameObject playerRangedPrefab;
@@ -61,6 +61,7 @@ public class Room : MonoBehaviour
         //to distribute the level without overlapping because of the size
         m_camera = FindObjectOfType<Camera>();
         RoomSize *= FloorPrefab.transform.localScale.x;
+        avoidanceEvent = true;
         SpawnRoom();
         GenerateRoom();
 

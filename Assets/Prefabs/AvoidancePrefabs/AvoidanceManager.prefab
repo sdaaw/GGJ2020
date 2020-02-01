@@ -51,3 +51,6 @@ MonoBehaviour:
   - {x: 28, y: 0, z: 0}
   - {x: -28, y: 0, z: 0}
   - {x: 0, y: 0, z: -28}
+  avoidanceTurret: {fileID: 2367682374737611408, guid: 258be24f13afcb941bb8fc7ce091a7f7,
+    type: 3}
+  sinMovement: 0

@@ -9,6 +9,9 @@ public class AvoidanceProjectile : MonoBehaviour
     public float speed;
     public float size;
     public bool isAimedAtPlayer;
+    public bool move;
+    private float timer = 0;
+    public bool doNotMove = false;
 
     public GameObject player;
     // Start is called before the first frame update
@@ -23,6 +26,13 @@ public class AvoidanceProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        if(move || isAimedAtPlayer)
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+        timer += 1 * Time.deltaTime;
+        if(timer > 20)
+        {
+            Destroy(gameObject);
+        }
     }
 }
