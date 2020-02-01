@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody m_rigidbody;
     private Transform m_transform;
 
+    public ParticleSystem dashParticle;
+
     private Quaternion m_oldRotation;
     private float m_horAxis;
     private float m_verAxis;
@@ -168,7 +170,7 @@ public class PlayerController : MonoBehaviour
         {
             m_transform.Translate(dir * dashDistance, Space.World);
         }
-
+        dashParticle.Play();
         yield return new WaitForSeconds(dashCooldown);
 
         m_allowDash = true;
