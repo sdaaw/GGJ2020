@@ -13,6 +13,8 @@ public class Gun : MonoBehaviour
     public float shootDelay;
     private float shootTimer;
 
+    public float damage;
+
     public int upgradeLvl;
 
     private void Update()
@@ -37,22 +39,22 @@ public class Gun : MonoBehaviour
             if(upgradeLvl == 0)
             {
                 GameObject bullet = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
-                bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, 0);
+                bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, damage);
             }
             else if(upgradeLvl == 1)
             {
                 GameObject bullet = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
-                bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, 0);
+                bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, damage);
 
                 GameObject bullet1 = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
                 Transform shootDir = gunHolder;
                 shootDir.transform.Rotate(new Vector3(0, 30, 0));
-                bullet1.GetComponent<Bullet>().Activate(bulletVelocity, shootDir.forward, gunHolder, 0);
+                bullet1.GetComponent<Bullet>().Activate(bulletVelocity, shootDir.forward, gunHolder, damage);
 
                 GameObject bullet2 = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
                 Transform shootDir1 = gunHolder;
                 shootDir1.transform.Rotate(new Vector3(0, 300, 0));
-                bullet2.GetComponent<Bullet>().Activate(bulletVelocity, shootDir1.forward, gunHolder, 0);
+                bullet2.GetComponent<Bullet>().Activate(bulletVelocity, shootDir1.forward, gunHolder, damage);
             }
         
         }

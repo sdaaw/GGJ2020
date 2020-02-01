@@ -20,4 +20,26 @@ public class ShieldOrb : MonoBehaviour
             transform.position = new Vector3(xPosition + owner.transform.position.x, 1, zPosition + owner.transform.position.z);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //its not our player (cant shoot itself)
+        if (other.transform != owner)
+        {
+            if (other.gameObject.layer != 8)
+            {
+                if (other.GetComponent<Stats>())
+                    other.GetComponent<Stats>().TakeDmg(25);
+
+                //play particle
+                Destroy(gameObject);
+            }
+            else
+            {
+                //play particle
+                Destroy(gameObject);
+            }
+        }
+
+    }
 }

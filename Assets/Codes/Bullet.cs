@@ -39,7 +39,9 @@ public class Bullet : MonoBehaviour
             //its a bullet
             if(other.gameObject.layer != 8)
             {
-                //TODO: deal dmg to target if possible
+                if (other.GetComponent<Stats>())
+                    other.GetComponent<Stats>().TakeDmg(dmg);
+
                 Destroy(gameObject);
             }
         }      
