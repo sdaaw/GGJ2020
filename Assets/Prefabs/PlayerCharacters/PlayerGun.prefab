@@ -180,6 +180,9 @@ MonoBehaviour:
   canShoot: 1
   shootDelay: 0.25
   upgradeLvl: 0
+  shoot2Delay: 3
+  aoeShotDelay: 0.5
+  canShoot2: 1
 --- !u!114 &6949545414640168151
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -611,20 +611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerGun
       objectReference: {fileID: 0}
-    - target: {fileID: 6949545413292364810, guid: be357c7ca7046254e82a3d75ad426e4d,
+    - target: {fileID: 2079579596085791948, guid: be357c7ca7046254e82a3d75ad426e4d,
         type: 3}
-      propertyPath: aoeShotDelay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6949545413292364810, guid: be357c7ca7046254e82a3d75ad426e4d,
-        type: 3}
-      propertyPath: canShoot2
+      propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6949545413292364810, guid: be357c7ca7046254e82a3d75ad426e4d,
-        type: 3}
-      propertyPath: shoot2Delay
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be357c7ca7046254e82a3d75ad426e4d, type: 3}
@@ -1693,10 +1683,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 906573423, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_FillAmount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5124782246120397571, guid: bd5b09ccfbddcda46868e0201a138203,
         type: 3}
       propertyPath: m_LocalPosition.x
