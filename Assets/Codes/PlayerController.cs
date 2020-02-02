@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour
 
         playerHp = m_playerUI.transform.GetChild(0).GetComponent<Image>();
         playerDash = m_playerUI.transform.GetChild(1).GetComponent<Image>();
+
+        //UpdateHealthImage();
     }
 
     private void Start()
@@ -287,7 +289,7 @@ public class PlayerController : MonoBehaviour
     public void UpdateHealthImage()
     {
         int hp = (int)m_stats.health;
-        playerHp.sprite = playerHps[hp - 1];
+        playerHp.sprite = playerHps[hp];
     }
 
     public void UpdateDashImage()
