@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     public float score;
+    public string heroName;
 
     private Rigidbody m_rigidbody;
     private Transform m_transform;
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
     private Text scoreText;
     private Text cleanseText;
     private Text deadText;
+    private Text nameText;
 
     private Stats m_stats;
 
@@ -135,9 +137,13 @@ public class PlayerController : MonoBehaviour
         scoreText = m_playerUI.transform.GetChild(5).GetComponent<Text>();
         cleanseText = m_playerUI.transform.GetChild(6).GetComponent<Text>();
         deadText = m_playerUI.transform.GetChild(7).GetComponent<Text>();
+        nameText = m_playerUI.transform.GetChild(8).GetComponent<Text>();
 
         playerIconIMG.sprite = playerIcon;
         ShowDeadScreen(false);
+
+        heroName = GetName();
+        nameText.text = heroName;
     }
 
     private void Start()
@@ -391,7 +397,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dead()
     {
-        UpdateDeadText("playername" + " died\n" + 
+        UpdateDeadText( heroName + " died\n" + 
                         "Rooms cleared " + FindObjectOfType<Room>().levelsCompleted + "\n" +
                         "Final score " + score + "\n" + "Press 'R' to spawn as a new hero");
         ShowDeadScreen(true);
