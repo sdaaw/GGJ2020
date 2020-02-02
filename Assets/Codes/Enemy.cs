@@ -151,7 +151,12 @@ public class Enemy : MonoBehaviour
         if(isRanged && HasGun)
         {
             if (GetComponent<Gun>().canShoot)
+            {
                 GetComponent<Gun>().Shoot(transform);
+
+                if (GetComponentInChildren<Animator>())
+                    GetComponentInChildren<Animator>().SetTrigger("Shoot");
+            }      
         }
     }
 
