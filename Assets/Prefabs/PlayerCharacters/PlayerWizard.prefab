@@ -4912,7 +4912,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f5393e2f2e6807d41bd83a1eb57d55eb, type: 3}
   - {fileID: 21300000, guid: 191287d0a3bbbe7498d87e97912d5f3f, type: 3}
   playerHp: {fileID: 0}
+  swordTrail: {fileID: 0}
   playerDash: {fileID: 0}
+  playerIcon: {fileID: 21300000, guid: f55b5b66c28b9624d80c82fadf244dbf, type: 3}
+  playerIconIMG: {fileID: 0}
+  playerIconCD: {fileID: 0}
 --- !u!54 &8145253568874975119
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4941,11 +4945,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031ec4e700073ce4886f30572f4159ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   owner: {fileID: 0}
   m_bulletPrefab: {fileID: 5925294661424371884, guid: 7a649b98e651a0047bc0762eb1fa5df0,
     type: 3}
-  bulletVelocity: 25
+  bulletVelocity: 15
   canShoot: 1
   shootDelay: 0.25
   upgradeLvl: 0

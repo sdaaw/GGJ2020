@@ -1519,16 +1519,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 983008283631687491, guid: 566a47a38d836d34d86acf2215258055,
-        type: 3}
-      propertyPath: bulletVelocity
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 983008283631687491, guid: 566a47a38d836d34d86acf2215258055,
-        type: 3}
-      propertyPath: damage
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8145253568874975108, guid: 566a47a38d836d34d86acf2215258055,
         type: 3}
       propertyPath: m_playerCamera

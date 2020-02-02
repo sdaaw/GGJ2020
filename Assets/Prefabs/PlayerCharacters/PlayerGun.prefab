@@ -125,6 +125,7 @@ MonoBehaviour:
     m_Bits: 0
   dashDistance: 3
   dashCooldown: 0.5
+  canDash: 1
   clips: []
   bgMusic: {fileID: 0}
   soPrefab: {fileID: 4193753465597057874, guid: 390fd8e8a5770864dbe8ba3be3b61f8c,
@@ -138,7 +139,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f5393e2f2e6807d41bd83a1eb57d55eb, type: 3}
   - {fileID: 21300000, guid: 191287d0a3bbbe7498d87e97912d5f3f, type: 3}
   playerHp: {fileID: 0}
+  swordTrail: {fileID: 0}
   playerDash: {fileID: 0}
+  playerIcon: {fileID: 21300000, guid: 737d81c766ee0824380996fe7bb93936, type: 3}
+  playerIconIMG: {fileID: 0}
+  playerIconCD: {fileID: 0}
 --- !u!54 &2079579596085791942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -189,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxHealth: 3
+  isDead: 0
   hasDeadAnim: 0
 --- !u!95 &5835837066360058544
 Animator:

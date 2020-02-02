@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
     public Image playerDash;
     private float dashTimerForUI;
 
+    public Sprite playerIcon;
+    public Image playerIconIMG;
+    public Image playerIconCD;
+
     private Stats m_stats;
 
 
@@ -98,8 +102,10 @@ public class PlayerController : MonoBehaviour
 
         playerHp = m_playerUI.transform.GetChild(0).GetComponent<Image>();
         playerDash = m_playerUI.transform.GetChild(1).GetComponent<Image>();
+        playerIconIMG = m_playerUI.transform.GetChild(2).GetComponent<Image>();
+        playerIconCD = m_playerUI.transform.GetChild(3).GetComponent<Image>();
 
-        //UpdateHealthImage();
+        playerIconIMG.sprite = playerIcon;
     }
 
     private void Start()
@@ -134,6 +140,7 @@ public class PlayerController : MonoBehaviour
             dashTimerForUI += Time.deltaTime;
 
         UpdateDashImage();
+        UpdatePlayerIconCD();
 
         //SHOOTING & SPELLS
         if (CurWeapon.GetType() == typeof(Gun))
@@ -295,6 +302,11 @@ public class PlayerController : MonoBehaviour
     public void UpdateDashImage()
     {
         playerDash.fillAmount = dashTimerForUI / dashCooldown;
+    }
+
+    public void UpdatePlayerIconCD()
+    {
+        //playerIconCD.fillAmount = 
     }
 
     public void Dead()
