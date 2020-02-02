@@ -437,7 +437,7 @@ public class Room : MonoBehaviour
             SwitchRoom();
         } else
         {
-            player.GetComponent<PlayerController>().UpdateDeadText("You have cleansed and restored the world from the evil plague, the humanity will now rejoice.");
+            player.GetComponent<PlayerController>().UpdateEndingText("You have cleansed and restored the world from the evil plague, the humanity will now rejoice.");
         }
     }
 
