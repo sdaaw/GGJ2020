@@ -55,12 +55,14 @@ public class Room : MonoBehaviour
 
     public Texture corruptedBlockTexture;
 
+    public bool isSpawningThings;
+
 
     public float RoomSize;
 
     public int levelsToReachBoss;
 
-    private int levelsCompleted = 0;
+    public int levelsCompleted = 0;
 
     public float elevationFactor = 1f;
 
@@ -101,6 +103,7 @@ public class Room : MonoBehaviour
 
     void GenerateRoom()
     {
+        isSpawningThings = true;
         Renderer rend;
         for(float i = 0; i < RoomSize; i += 4)
         {
@@ -225,7 +228,7 @@ public class Room : MonoBehaviour
         e = a.GetComponent<Enemy>();
         if(Random.Range(1, 10) > 7)
         {
-            Instantiate(shroomEnemy, new Vector3(
+            a = Instantiate(shroomEnemy, new Vector3(
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.x,
             1,
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.z), Quaternion.identity);
@@ -239,12 +242,15 @@ public class Room : MonoBehaviour
         player.GetComponent<PlayerController>().AllowMovement = false;
         yield return new WaitForSeconds(3f);
         int enemyCount = Random.Range(2, 5);
+        enemyCount += levelsCompleted/2;
+
         for (int i = 0; i < enemyCount; i++)
         {
             SetEnemies();
         }
         player.GetComponent<PlayerController>().AllowMovement = true;
         yield return new WaitForSeconds(0.5f);
+        isSpawningThings = false;
     }
 
 
@@ -311,9 +317,16 @@ public class Room : MonoBehaviour
                     );
             }
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+
+        if(EnemyList.Count == 0 && !isSpawningThings)
+            player.GetComponent<PlayerController>().SetCleanseText(true);
+        else
+            player.GetComponent<PlayerController>().SetCleanseText(false);
+
+        if (Input.GetKeyUp(KeyCode.Space) && !isSpawningThings)
         {
-            if(EnemyList.Count == 0)
+            isSpawningThings = true;
+            if (EnemyList.Count == 0)
             {
                 StartCoroutine(RepairWorld());
             }
@@ -353,9 +366,11 @@ public class Room : MonoBehaviour
         }
     }
 
-    IEnumerator RepairWorld()
+    public IEnumerator RepairWorld()
     {
         levelsCompleted++;
+        player.GetComponent<PlayerController>().UpdateRoomText("Rooms cleared " + levelsCompleted + "/" + levelsToReachBoss);
+        player.GetComponent<PlayerController>().score += 1000 * levelsCompleted;
         player.GetComponent<PlayerController>().AllowMovement = false;
         Renderer rend;
         MeshRenderer mRend;

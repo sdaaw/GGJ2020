@@ -27,7 +27,6 @@ public class Enemy : MonoBehaviour
     public bool isRanged;
     public float escapeDistance;
 
-
     private Animator m_anim;
 
     public Weapon curWeapon;
@@ -139,6 +138,12 @@ public class Enemy : MonoBehaviour
                     m_anim.SetFloat("Speed", 0);
             }
         }
+
+        if(transform.position.y < -20)
+        {
+            Destroy(gameObject);
+        }
+            
     }
 
     public void DoLogic()

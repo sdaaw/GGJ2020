@@ -53,4 +53,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: -28}
   avoidanceTurret: {fileID: 2367682374737611408, guid: 258be24f13afcb941bb8fc7ce091a7f7,
     type: 3}
+  repairedEarthTexture: {fileID: 2800000, guid: 9f18452d4389430469c8aa343e3e724f,
+    type: 3}
+  Earth: {fileID: 8385233792539884808, guid: c6a0e89e710c0414d86fb28097a09d39, type: 3}
   sinMovement: 0

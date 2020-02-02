@@ -12,6 +12,8 @@ public class Stats : MonoBehaviour
 
     public bool hasDeadAnim;
 
+    public float scoreOnDeath;
+
     private void Start()
     {
         rm = FindObjectOfType<Room>();
@@ -68,11 +70,13 @@ public class Stats : MonoBehaviour
             {
                 //TODO: spawn dead explosion
             }
-        }
-           
+        }   
 
         if (GetComponent<Enemy>())
+        {
             GetComponent<Enemy>().AllowMovement = false;
+            FindObjectOfType<PlayerController>().score += scoreOnDeath;
+        }  
 
         if (GetComponent<Gun>())
             GetComponent<Gun>().enabled = false;

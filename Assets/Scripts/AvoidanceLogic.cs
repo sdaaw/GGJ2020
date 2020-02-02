@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AvoidanceLogic : MonoBehaviour
 {
-
     public List<GameObject> projectileList = new List<GameObject>();
     public Vector3[] SpawnPositions;
     public GameObject avoidanceTurret;
     private AvoidanceTurret AT;
     private Room room;
+    public Texture repairedEarthTexture;
+
+    public GameObject Earth;
 
     public bool sinMovement = false;
     // Start is called before the first frame update
@@ -47,11 +48,24 @@ public class AvoidanceLogic : MonoBehaviour
         yield return new WaitForSeconds(3f);
         AT.circleAttack = true;
         AT.rainAttack = true;
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(5f);
         AT.radius = 10f;
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(5f);
         AT.radius = 15f;
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(5f);
         AT.radius = 20f;
+        yield return new WaitForSeconds(5f);
+        AT.circleAttack = false;
+        AT.rainAttack = false;
+        yield return new WaitForSeconds(5f);
+        AT.deathParticle.Play();
+        AT.ogParticle.Stop();
+        AT.departingParticle.Play();
+        yield return new WaitForSeconds(3f);
+        AT.deathParticle.Stop();
+        AT.gameObject.SetActive(false);
+        StartCoroutine(room.RepairWorld());
+        MeshRenderer mRend = Earth.GetComponentInChildren<MeshRenderer>();
+        mRend.sharedMaterial.SetTexture("_MainTex", repairedEarthTexture);
     }
 }

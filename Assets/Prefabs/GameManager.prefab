@@ -48,26 +48,47 @@ MonoBehaviour:
   RoomFloor: []
   PropList: []
   EnemyList: []
-  playerRangedPrefab: {fileID: 0}
-  playerMeleePrefab: {fileID: 0}
-  repairedColor: {r: 0, g: 0, b: 0, a: 0}
-  corruptedColor: {r: 0, g: 0, b: 0, a: 0}
-  corruptedColorVariationR: 0
-  corruptedColorVariationG: 0
-  corruptedColorVariationB: 0
-  colorVariationR: 0
-  colorVariationG: 0
-  colorVariationB: 0
-  dangerPrefab: {fileID: 0}
+  playerRangedPrefab: {fileID: 2079579596085791948, guid: be357c7ca7046254e82a3d75ad426e4d,
+    type: 3}
+  playerMeleePrefab: {fileID: 8984004113760615288, guid: 4702c7626b406e24e84e795ad184e26d,
+    type: 3}
+  playerVurtnePrefab: {fileID: 8145253568874975109, guid: 566a47a38d836d34d86acf2215258055,
+    type: 3}
+  repairedColor: {r: 1, g: 1, b: 1, a: 1}
+  corruptedColor: {r: 0.5283019, g: 0.23673905, b: 0.5148345, a: 1}
+  corruptedColorVariationR: 0.1
+  corruptedColorVariationG: 0.1
+  corruptedColorVariationB: 0.1
+  colorVariationR: 0.1
+  colorVariationG: 0.1
+  colorVariationB: 0.1
+  dangerPrefab: {fileID: 6922355800463949403, guid: 5e981d7d97a5bb145b6170c9d77969cd,
+    type: 3}
   avoidanceManager: {fileID: 6565009710806804487, guid: c27095dd9f6be94478b882948709a2f2,
     type: 3}
-  enemyPrefab: {fileID: 0}
-  wallPrefab: {fileID: 0}
-  bushPrefab: {fileID: 0}
-  treePrefab: {fileID: 1106573078777508149, guid: 07a3a922dadc7f8479b9a054c0fa9e09,
+  enemyPrefab: {fileID: 8769254606013830240, guid: ab0994900d3c32448bef271a5cd1eab5,
     type: 3}
+  wallPrefab: {fileID: 4818638178630654069, guid: fe9869fcfef543e4ea27e8a0118b2224,
+    type: 3}
+  bushPrefab: {fileID: 2975279004206938398, guid: e45f0a20813d41147bd5bff3653503e8,
+    type: 3}
+  corruptedTreePrefab: {fileID: 1106573078777508149, guid: 07a3a922dadc7f8479b9a054c0fa9e09,
+    type: 3}
+  treePrefab: {fileID: 1521060244785636911, guid: 00e17f78bf4952f4c94af3281d961f23,
+    type: 3}
+  shroomEnemy: {fileID: 2455546780808329041, guid: ab61abac981c4d3498d243cd2b408cba,
+    type: 3}
+  pickupPrefabList:
+  - {fileID: 6263344349630641594, guid: 46bc30c32ae8d2f43b68162779ff5aa6, type: 3}
+  - {fileID: 8137988543033978550, guid: e19a012dd6b7e564a90ec093c31c28e2, type: 3}
+  - {fileID: 6675386644161069130, guid: 9614b3aa956e4324cbdb7436c7ea55c5, type: 3}
+  - {fileID: 7468951712989903809, guid: 79d886409115a4a42ae25cd81e6a1504, type: 3}
+  - {fileID: 1364515436747433994, guid: 79914d65c7735b04094df383a271fb6d, type: 3}
   randPropScale: 0
   avoidanceEvent: 0
   isRoomClear: 0
-  RoomSize: 5
+  corruptedBlockTexture: {fileID: 2800000, guid: ecd2270036f604b4081e0edc2b2cfeee,
+    type: 3}
+  RoomSize: 50
+  levelsToReachBoss: 10
   elevationFactor: 0.05
