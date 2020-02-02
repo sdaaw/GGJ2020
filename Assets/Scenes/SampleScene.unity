@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.026617449, g: 0.015878001, b: 0.028356876, a: 1}
+  m_IndirectSpecularColor: {r: 0.054572128, g: 0.030200608, b: 0.0570336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -507,6 +507,12 @@ MonoBehaviour:
   blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
   brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
     type: 3}
+--- !u!1 &1281879183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8385233792539884808, guid: c6a0e89e710c0414d86fb28097a09d39,
+    type: 3}
+  m_PrefabInstance: {fileID: 8385233793709247603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1386038418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -907,9 +913,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
-      propertyPath: levelsToReachBoss
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: Earth
+      value: 
+      objectReference: {fileID: 1281879183}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: m_LocalPosition.x
