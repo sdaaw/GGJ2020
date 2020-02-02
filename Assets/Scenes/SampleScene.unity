@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.02661745, g: 0.015878001, b: 0.028356878, a: 1}
+  m_IndirectSpecularColor: {r: 0.026617449, g: 0.015878001, b: 0.028356876, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1152,6 +1152,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
+      propertyPath: propPrefabList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: pickupPrefabList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 8984004113760615288, guid: 4702c7626b406e24e84e795ad184e26d,
@@ -1284,6 +1294,42 @@ PrefabInstance:
       propertyPath: shroomEnemy
       value: 
       objectReference: {fileID: 2455546780808329041, guid: ab61abac981c4d3498d243cd2b408cba,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: pickupPrefabList.Array.data[0]
+      value: 
+      objectReference: {fileID: 6263344349630641594, guid: 46bc30c32ae8d2f43b68162779ff5aa6,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: pickupPrefabList.Array.data[1]
+      value: 
+      objectReference: {fileID: 6675386644161069130, guid: 9614b3aa956e4324cbdb7436c7ea55c5,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: pickupPrefabList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8137988543033978550, guid: e19a012dd6b7e564a90ec093c31c28e2,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: pickupPrefabList.Array.data[3]
+      value: 
+      objectReference: {fileID: 7468951712989903809, guid: 79d886409115a4a42ae25cd81e6a1504,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: pickupPrefabList.Array.data[4]
+      value: 
+      objectReference: {fileID: 1364515436747433994, guid: 79914d65c7735b04094df383a271fb6d,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: playerVurtnePrefab
+      value: 
+      objectReference: {fileID: 8145253568874975109, guid: 566a47a38d836d34d86acf2215258055,
         type: 3}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}

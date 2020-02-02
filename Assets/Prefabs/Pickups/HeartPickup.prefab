@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  value: 1
+  value: 2
   destroyOnPickUp: 1
 --- !u!1 &7686782035084835433
 GameObject:

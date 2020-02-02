@@ -50,7 +50,7 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!dontFollow)
+        if (!dontFollow && m_follow != null)
         {
             FollowTarget();
         }

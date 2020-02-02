@@ -41,6 +41,8 @@ public class Room : MonoBehaviour
     public GameObject treePrefab;
     public GameObject shroomEnemy;
 
+    public List<GameObject> pickupPrefabList = new List<GameObject>();
+
     private GameObject player;
 
     public float randPropScale;
@@ -130,12 +132,6 @@ public class Room : MonoBehaviour
 
                 }
 
-                if (Random.Range(0, 100) > 98)
-                {
-                    //powerup spawn
-
-                }
-
                 rend = a.GetComponent<Renderer>();
                 rend.material.color = new Color(corruptedColor.r + Random.Range(-corruptedColorVariationR, corruptedColorVariationR), 
                     corruptedColor.g + Random.Range(-corruptedColorVariationG, corruptedColorVariationG), 
@@ -147,15 +143,45 @@ public class Room : MonoBehaviour
         if (avoidanceEvent)
         {
             Instantiate(avoidanceManager, Vector3.zero, Quaternion.identity);
-
-        } else
+        }
+        else
         {
-
             int blockTiles = 15; 
             for (int i = 0; i < blockTiles; i++)
             {
                 SetBlockTiles();
             }
+
+            int pickups = Random.Range(2,6);
+
+            for (int j = 0; j < pickups; j++)
+            {
+                int rBlock = Random.Range(0, RoomFloor.Count);
+
+                if (!RoomFloor[rBlock].GetComponent<Block>().isBlock)
+                {
+                    int pIndex = 0;
+                    int r = Random.Range(0, 100);
+
+                    if (r >= 0 && r <= 30)
+                        pIndex = 0;
+                    else if (r > 30 && r <= 55)
+                        pIndex = 1;
+                    else if (r > 55 && r <= 75)
+                        pIndex = 2;
+                    else if (r > 75 && r <= 85)
+                        pIndex = 3;
+                    else if (r > 85 && r <= 100)
+                        pIndex = 4;
+
+                    //pickups here
+                    GameObject prop = Instantiate(pickupPrefabList[pIndex], new Vector3( RoomFloor[rBlock].transform.position.x
+                                                                                         ,2
+                                                                                         ,RoomFloor[rBlock].transform.position.z)
+                        , Quaternion.identity);
+                }
+            }
+               
             StartCoroutine(SpawnEnemies());
         }
         SpawnTile = RoomFloor[(RoomFloor.Count / 2)];
@@ -214,7 +240,7 @@ public class Room : MonoBehaviour
         BlockTile = RoomFloor[Random.Range(0, RoomFloor.Count)].GetComponent<Block>();
         BlockTile.transform.localScale = new Vector3(
             BlockTile.gameObject.transform.localScale.x, 
-            BlockTile.gameObject.transform.localScale.y + Random.Range(0.5f, 1.5f), 
+            BlockTile.gameObject.transform.localScale.y + Random.Range(2.25f, 3f), 
             BlockTile.gameObject.transform.localScale.z);
 
         rend = BlockTile.gameObject.GetComponent<Renderer>();
