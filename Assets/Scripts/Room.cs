@@ -63,6 +63,7 @@ public class Room : MonoBehaviour
     public Texture corruptedEarthTexture;
 
     public Texture corruptedBlockTexture;
+    public Texture repairedBlockTexture;
 
     public bool isSpawningThings;
 
@@ -398,7 +399,7 @@ public class Room : MonoBehaviour
             mRend = block.GetComponent<MeshRenderer>();
 
 
-            mRend.sharedMaterial.SetTexture("_MainTex", corruptedBlockTexture);
+            mRend.sharedMaterial.SetTexture("_MainTex", repairedBlockTexture);
             /*rend.material.color = new Color(
                 repairedColor.r + Random.Range(-colorVariationR, colorVariationR), 
                 repairedColor.g + Random.Range(-colorVariationG, colorVariationG),
