@@ -138,6 +138,12 @@ public class Enemy : MonoBehaviour
                     m_anim.SetFloat("Speed", 0);
             }
         }
+
+        if(transform.position.y < -20)
+        {
+            Destroy(gameObject);
+        }
+            
     }
 
     public void DoLogic()
