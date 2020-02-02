@@ -155,7 +155,10 @@ public class Room : MonoBehaviour
                     float randScale = Random.Range(0.6f, 1f);
                     b.transform.localScale = new Vector3(0, 0, 0);
                     rend2 = b.GetComponentInChildren<Renderer>();
-                    rend2.material.color = new Color(Random.Range(0.2f, 0.5f), 0, Random.Range(0.1f, 0.3f));
+                    rend2.material.color = new Color(
+                        corruptedPropColor.r + Random.Range(-corruptedPropColorVariationR, corruptedPropColorVariationR),
+                        corruptedPropColor.g + Random.Range(-corruptedPropColorVariationG, corruptedPropColorVariationG),
+                        corruptedPropColor.b + Random.Range(-corruptedPropColorVariationB, corruptedPropColorVariationB));
 
                 }
 
