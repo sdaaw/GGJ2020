@@ -601,12 +601,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   owner: {fileID: 0}
-  m_bulletPrefab: {fileID: 5925294661424371884, guid: 7a649b98e651a0047bc0762eb1fa5df0,
+  m_bulletPrefab: {fileID: 5925294661424371884, guid: d265ced60e27c5640b4c6cb5db8b4277,
     type: 3}
   bulletVelocity: 25
   canShoot: 1
   shootDelay: 1
   upgradeLvl: 0
+  shoot2Delay: 0
+  aoeShotDelay: 0
+  canShoot2: 0
 --- !u!1 &2685882520193614360
 GameObject:
   m_ObjectHideFlags: 0

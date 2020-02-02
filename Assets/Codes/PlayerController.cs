@@ -145,20 +145,28 @@ public class PlayerController : MonoBehaviour
         //SHOOTING & SPELLS
         if (CurWeapon.GetType() == typeof(Gun))
         {
+            //primary fire
             if (Input.GetKeyDown(KeyCode.Mouse0) && CurWeapon != null)
             {
-                ((Gun)CurWeapon).Shoot(m_transform);
-                if (m_anim != null)
-                    m_anim.SetTrigger("Shoot");
-               
+                Gun gun = (Gun)CurWeapon;
+                if(gun.canShoot)
+                {
+                    gun.Shoot(m_transform);
+                    if (m_anim != null)
+                        m_anim.SetTrigger("Shoot");
+                } 
             }
 
+            //aoe shooting thing
             if (Input.GetKeyDown(KeyCode.Mouse1) && CurWeapon != null)
             {
-                //TODO: Implement aoe shoot thing
-               ((Gun)CurWeapon).Shoot(m_transform);
-                if (m_anim != null)
-                    m_anim.SetTrigger("Shoot2");    
+                Gun gun = (Gun)CurWeapon;
+                if(gun.canShoot2)
+                {
+                    gun.Shoot2(m_transform);
+                    if (m_anim != null)
+                        m_anim.SetTrigger("Shoot2");
+                }
             }
         }
         //MELEE
@@ -306,7 +314,12 @@ public class PlayerController : MonoBehaviour
 
     public void UpdatePlayerIconCD()
     {
-        //playerIconCD.fillAmount = 
+        //this might be very inefficient check to be called in update.. but its jam game and im in hurry
+        if(CurWeapon != null && CurWeapon.GetType() == typeof(Gun))
+        {
+            Gun gun = (Gun)CurWeapon;
+            playerIconCD.fillAmount = 1 - (gun.GetShoot2Timer / gun.shoot2Delay);
+        }
     }
 
     public void Dead()

@@ -15,6 +15,26 @@ public class Gun : Weapon
 
     public int upgradeLvl;
 
+    public float shoot2Delay;
+    private float shoot2Timer;
+    public float aoeShotDelay;
+    public bool canShoot2;
+
+    public float GetShoot2Timer
+    {
+        get
+        {
+            return shoot2Timer;
+        }
+           
+    }
+
+    private void Start()
+    {
+        shootTimer = shootDelay;
+        shoot2Timer = shoot2Delay;
+    }
+
     private void Update()
     {
         if (shootTimer < shootDelay)
@@ -24,7 +44,16 @@ public class Gun : Weapon
         {
             shootTimer = shootDelay;
             canShoot = true;
-        }            
+        }
+
+        if (shoot2Timer < shoot2Delay)
+            shoot2Timer += Time.deltaTime;
+
+        if (shoot2Timer >= shoot2Delay)
+        {
+            shoot2Timer = shoot2Delay;
+            canShoot2 = true;
+        }
     }
 
     public void Shoot(Transform gunHolder)
@@ -39,6 +68,7 @@ public class Gun : Weapon
                 GameObject bullet = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
                 bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, damage);
             }
+            //triple bullet (multishot)
             else if(upgradeLvl == 1)
             {
                 GameObject bullet = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
@@ -53,8 +83,31 @@ public class Gun : Weapon
                 Transform shootDir1 = gunHolder;
                 shootDir1.transform.Rotate(new Vector3(0, 300, 0));
                 bullet2.GetComponent<Bullet>().Activate(bulletVelocity, shootDir1.forward, gunHolder, damage);
-            }
-        
+            }  
+        }
+    }
+
+    public void Shoot2(Transform gunHolder)
+    {
+        if (canShoot2)
+        {
+            canShoot2 = false;
+            shoot2Timer = 0;
+            StartCoroutine(DelayAoeShot(gunHolder));
+        }
+    }
+
+    private IEnumerator DelayAoeShot(Transform gunHolder)
+    {
+        yield return new WaitForSeconds(aoeShotDelay);
+
+        int bulletSpray = 15;
+
+        for (int i = 0; i < bulletSpray; i++)
+        {
+            GameObject bullet = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
+            bullet.transform.Rotate(new Vector3(0, 25 * i, 0));
+            bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, damage);
         }
     }
 }
