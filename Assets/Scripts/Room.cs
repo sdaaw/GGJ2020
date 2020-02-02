@@ -38,6 +38,7 @@ public class Room : MonoBehaviour
     public GameObject bushPrefab;
     public GameObject corruptedTreePrefab;
     public GameObject treePrefab;
+    public GameObject shroomEnemy;
 
     private GameObject player;
 
@@ -176,14 +177,12 @@ public class Room : MonoBehaviour
         e = a.GetComponent<Enemy>();
         if(Random.Range(1, 10) > 7)
         {
-            e.isRanged = true;
-            e.escapeDistance = Random.Range(5, 15);
-            
-        } else
-        {
-            e.isMelee = true;
+            Instantiate(shroomEnemy, new Vector3(
+            RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.x,
+            1,
+            RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.z), Quaternion.identity);
         }
-        EnemyList.Add(a);
+        EnemyList.Add(a); //wow
     }
 
     IEnumerator SpawnEnemies()
