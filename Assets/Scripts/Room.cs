@@ -17,6 +17,7 @@ public class Room : MonoBehaviour
 
     public GameObject playerRangedPrefab;
     public GameObject playerMeleePrefab;
+    public GameObject playerVurtnePrefab;
 
     private GameObject playerPrefab;
 
@@ -62,15 +63,20 @@ public class Room : MonoBehaviour
 
     void Start()
     {
-        if (Random.Range(0, 100) > 50)
+
+        int plrId = Random.Range(0, 3);
+
+        if (plrId == 0)
         {
             playerPrefab = playerMeleePrefab;
             print("melee");
-        }
-        else
+        } else if(plrId == 1)
         {
             playerPrefab = playerRangedPrefab;
             print("ranged");
+        } else if(plrId == 2)
+        {
+            playerPrefab = playerVurtnePrefab;
         }
         randPropScale = Random.Range(0.2f, 0.5f);
         //to distribute the level without overlapping because of the size
@@ -187,7 +193,7 @@ public class Room : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        yield return new WaitForSeconds(0.1f); //a small delay so the player spawns xD
+        yield return new WaitForSeconds(0.3f); //a small delay so the player spawns xD
         player.GetComponent<PlayerController>().AllowMovement = false;
         yield return new WaitForSeconds(3f);
         int enemyCount = Random.Range(2, 5);
@@ -214,19 +220,6 @@ public class Room : MonoBehaviour
         rend = BlockTile.gameObject.GetComponent<Renderer>();
         rend.material.color = Color.gray;
 
-    }
-
-    IEnumerator SpawnDmgProps(GameObject DmgTile)
-    {
-        GameObject a;
-        yield return new WaitForSeconds(3f);
-        for (int i = 0; i < 10; i++)
-        {
-            a = Instantiate(dangerPrefab, new Vector3(DmgTile.transform.position.x + Random.Range(0, 1),
-                DmgTile.transform.position.y,
-                DmgTile.transform.position.z + Random.Range(0, 1)), Quaternion.identity);
-            PropList.Add(a);
-        }
     }
 
 
