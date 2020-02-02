@@ -65,6 +65,9 @@ public class Room : MonoBehaviour
     public Texture corruptedBlockTexture;
     public Texture repairedBlockTexture;
 
+    public AudioClip BGMusic;
+    public AudioClip BossMusic;
+
     public bool isSpawningThings;
 
 
@@ -83,6 +86,8 @@ public class Room : MonoBehaviour
 
     private Camera m_camera;
     private GameObject SpawnTile;
+
+    public GameObject audioSourceObject;
 
 
     void Start()
@@ -173,10 +178,14 @@ public class Room : MonoBehaviour
 
         if (levelsCompleted == levelsToReachBoss)
         {
+            audioSourceObject.GetComponent<AudioSource>().clip = BossMusic;
+            audioSourceObject.GetComponent<AudioSource>().Play();
             Instantiate(avoidanceManager, Vector3.zero, Quaternion.identity);
         }
         else
         {
+            audioSourceObject.GetComponent<AudioSource>().clip = BGMusic;
+            audioSourceObject.GetComponent<AudioSource>().Play();
             int blockTiles = 15; 
             for (int i = 0; i < blockTiles; i++)
             {

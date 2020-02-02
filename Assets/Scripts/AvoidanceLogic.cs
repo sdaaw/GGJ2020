@@ -6,11 +6,12 @@ public class AvoidanceLogic : MonoBehaviour
     public List<GameObject> projectileList = new List<GameObject>();
     public Vector3[] SpawnPositions;
     public GameObject avoidanceTurret;
+
     private AvoidanceTurret AT;
     private Room room;
     public Texture repairedEarthTexture;
 
-    public GameObject audioSourceObject;
+    public AudioClip bossMusic;
 
     public GameObject Earth;
 
@@ -36,8 +37,6 @@ public class AvoidanceLogic : MonoBehaviour
 
     IEnumerator Fight()
     {
-        Instantiate(audioSourceObject, Vector3.zero, Quaternion.identity);
-        audioSourceObject.GetComponent<AudioSource>().Play();
 
         yield return new WaitForSeconds(5f);
         AT.destination = new Vector3(room.RoomFloor[room.RoomFloor.Count / 2].transform.position.x, 2, room.RoomFloor[room.RoomFloor.Count / 2].transform.position.z);

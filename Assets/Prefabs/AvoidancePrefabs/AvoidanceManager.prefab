@@ -55,6 +55,7 @@ MonoBehaviour:
     type: 3}
   repairedEarthTexture: {fileID: 2800000, guid: 9f18452d4389430469c8aa343e3e724f,
     type: 3}
+  bossMusic: {fileID: 8300000, guid: 19abe4e56e7e6d74c94c3a8740a79ba7, type: 3}
   audioSourceObject: {fileID: 5561013051620763431, guid: 8ce387e0b2f405e46b43dd666b1ee964,
     type: 3}
   Earth: {fileID: 8385233792539884808, guid: c6a0e89e710c0414d86fb28097a09d39, type: 3}
