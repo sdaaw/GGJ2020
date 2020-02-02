@@ -55,6 +55,8 @@ public class Room : MonoBehaviour
 
     public Texture corruptedBlockTexture;
 
+    public bool isSpawningThings;
+
 
     public float RoomSize;
 
@@ -101,6 +103,7 @@ public class Room : MonoBehaviour
 
     void GenerateRoom()
     {
+        isSpawningThings = true;
         Renderer rend;
         for(float i = 0; i < RoomSize; i += 4)
         {
@@ -247,6 +250,7 @@ public class Room : MonoBehaviour
         }
         player.GetComponent<PlayerController>().AllowMovement = true;
         yield return new WaitForSeconds(0.5f);
+        isSpawningThings = false;
     }
 
 
@@ -314,14 +318,15 @@ public class Room : MonoBehaviour
             }
         }
 
-        if(EnemyList.Count == 0)
+        if(EnemyList.Count == 0 && !isSpawningThings)
             player.GetComponent<PlayerController>().SetCleanseText(true);
         else
             player.GetComponent<PlayerController>().SetCleanseText(false);
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) && !isSpawningThings)
         {
-            if(EnemyList.Count == 0)
+            isSpawningThings = true;
+            if (EnemyList.Count == 0)
             {
                 StartCoroutine(RepairWorld());
             }
