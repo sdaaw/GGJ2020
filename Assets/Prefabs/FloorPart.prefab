@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b80611dba69ff94ea01d4cb5f7c5e50, type: 2}
+  - {fileID: 2100000, guid: 2a83a79f7cc58444d9be5f6f5b453e59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   exitSpeed: 0
   spawnSpeed: 0
   corruptedTexture: {fileID: 2800000, guid: 8e5abb93b53e88947980e39d1cc3febe, type: 3}
+  finalDestination: {x: 0, y: 0, z: 0}
 --- !u!65 &7033934482060894884
 BoxCollider:
   m_ObjectHideFlags: 0
