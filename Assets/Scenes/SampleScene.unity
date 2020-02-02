@@ -1285,6 +1285,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2455546780808329041, guid: ab61abac981c4d3498d243cd2b408cba,
         type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: playerVurtnePrefab
+      value: 
+      objectReference: {fileID: 8145253568874975109, guid: 566a47a38d836d34d86acf2215258055,
+        type: 3}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: m_LocalPosition.x
