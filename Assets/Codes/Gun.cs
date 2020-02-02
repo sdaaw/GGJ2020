@@ -67,7 +67,15 @@ public class Gun : Weapon
             canShoot = false;
             shootTimer = 0;
 
-            if(upgradeLvl == 0)
+            if (GetComponent<PlayerController>())
+            {
+                if (!GetComponent<PlayerController>().isWizard)
+                    SoundManager.PlayASource("PlayerShoot");
+                else
+                    SoundManager.PlayASource("Spell");
+            }
+
+            if (upgradeLvl == 0)
             {
                 GameObject bullet = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
                 bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, damage);
@@ -109,6 +117,9 @@ public class Gun : Weapon
 
         for (int i = 0; i < bulletSpray; i++)
         {
+            //yield return new WaitForSeconds(0.1f);
+            SoundManager.PlayASource("Spell2");
+
             GameObject bullet = Instantiate(m_bulletPrefab, gunHolder.position + gunHolder.forward, Quaternion.identity);
             bullet.transform.Rotate(new Vector3(0, 25 * i, 0));
             bullet.GetComponent<Bullet>().Activate(bulletVelocity, gunHolder.forward, gunHolder, damage);

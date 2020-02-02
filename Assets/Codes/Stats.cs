@@ -27,6 +27,7 @@ public class Stats : MonoBehaviour
 
         if(GetComponent<PlayerController>())
         {
+            SoundManager.PlayASource("TakeDamage");
             PlayerController pc = GetComponent<PlayerController>();
             if(pc.hasShield)
             {
@@ -62,7 +63,7 @@ public class Stats : MonoBehaviour
 
     IEnumerator WaitDestroy()
     {
-        if(GetComponentInChildren<Animator>())
+        if (GetComponentInChildren<Animator>())
         {
             if(hasDeadAnim)
                 GetComponentInChildren<Animator>().SetTrigger("Death");
@@ -76,6 +77,11 @@ public class Stats : MonoBehaviour
         {
             GetComponent<Enemy>().AllowMovement = false;
             FindObjectOfType<PlayerController>().score += scoreOnDeath;
+
+            if(!GetComponent<Enemy>().isRanged)
+                SoundManager.PlayASource("EnemyDeath");
+            else
+                SoundManager.PlayASource("EnemyDeath2");
         }  
 
         if (GetComponent<Gun>())

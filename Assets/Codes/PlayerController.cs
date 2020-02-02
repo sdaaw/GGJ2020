@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
 
     private Stats m_stats;
 
+    public bool isWizard;
+
 
 
     public string[] firstNames = new string[] {
@@ -228,6 +230,7 @@ public class PlayerController : MonoBehaviour
                 {
                     sword.Swing();
                     m_anim.SetTrigger("Swing1");
+                    SoundManager.PlayASource("Swing");
                 }
             }
 
@@ -239,6 +242,7 @@ public class PlayerController : MonoBehaviour
                 m_anim.SetBool("bladestorm", true);
                 canDash = false;
                 swordTrail.Play();
+                //TODO: Loop swirl sound
 
             }
             //release
@@ -300,6 +304,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        SoundManager.PlayASource("GunSound");
         m_allowDash = false;
 
         Vector3 dir = m_transform.forward;

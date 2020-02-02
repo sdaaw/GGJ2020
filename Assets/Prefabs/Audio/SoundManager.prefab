@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2024473978489630487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2024473978489630481}
+  - component: {fileID: 2024473978489630480}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2024473978489630481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024473978489630487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2024473978489630480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024473978489630487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abc88529ca300e4c9c87570dd6931e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - aSource: {fileID: 4950087475596600021, guid: 6d51246195ec5bb4a9c129f74df5db62,
+      type: 3}
+    aName: EnemyDeath
+  - aSource: {fileID: 653775229349985116, guid: 86835fd23acb8ab4893802ea7c83b44c,
+      type: 3}
+    aName: EnemyDeath2
+  - aSource: {fileID: 2038636146259408594, guid: 5acc6034b98de00458d232c030f67321,
+      type: 3}
+    aName: EnemyMelee
+  - aSource: {fileID: 5224665458606271268, guid: cfb710cb6d1202b43a9fd139c90661f2,
+      type: 3}
+    aName: EnemyShoot
+  - aSource: {fileID: 8762678168674102108, guid: 5f0ebd3404a909f41bf251ea0d3f0198,
+      type: 3}
+    aName: GunSound
+  - aSource: {fileID: 8660592099067719871, guid: 216401c9daed39449bbbf351de876d8b,
+      type: 3}
+    aName: PlayerShoot
+  - aSource: {fileID: 4584794838109356323, guid: 6ae2c6250202b18418c97f8c7431b092,
+      type: 3}
+    aName: Spell
+  - aSource: {fileID: 6702187611550445990, guid: 9a3cb57664e61b64a91687f7ce8448a2,
+      type: 3}
+    aName: Spell2
+  - aSource: {fileID: 3736484866864194267, guid: 61f54090456042240bdd7caeb0341958,
+      type: 3}
+    aName: Swing
+  - aSource: {fileID: 5558380237469431311, guid: 99187b4809c0f624da61c4d2bcfc9a9e,
+      type: 3}
+    aName: TakeDamage

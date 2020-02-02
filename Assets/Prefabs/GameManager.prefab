@@ -54,15 +54,15 @@ MonoBehaviour:
     type: 3}
   playerVurtnePrefab: {fileID: 8145253568874975109, guid: 566a47a38d836d34d86acf2215258055,
     type: 3}
-  repairedColor: {r: 1, g: 1, b: 1, a: 1}
+  repairedColor: {r: 0, g: 1, b: 0.0184803, a: 1}
   corruptedColor: {r: 0.5660378, g: 0.5259879, b: 0.5647028, a: 1}
-  corruptedPropColor: {r: 0, g: 0, b: 0, a: 0}
+  corruptedPropColor: {r: 0.5377358, g: 0.38300994, b: 0.5079809, a: 1}
   corruptedColorVariationR: 0.1
   corruptedColorVariationG: 0.1
   corruptedColorVariationB: 0.1
-  corruptedPropColorVariationR: 0
-  corruptedPropColorVariationG: 0
-  corruptedPropColorVariationB: 0
+  corruptedPropColorVariationR: 0.1
+  corruptedPropColorVariationG: 0.1
+  corruptedPropColorVariationB: 0.1
   colorVariationR: 0.1
   colorVariationG: 0.1
   colorVariationB: 0.1
@@ -94,11 +94,13 @@ MonoBehaviour:
   Earth: {fileID: 0}
   corruptedEarthTexture: {fileID: 2800000, guid: 756b769e69ed0b54ea930c09c2defa55,
     type: 3}
-  corruptedBlockTexture: {fileID: 2800000, guid: ecd2270036f604b4081e0edc2b2cfeee,
+  corruptedBlockTexture: {fileID: 2800000, guid: 8e5abb93b53e88947980e39d1cc3febe,
+    type: 3}
+  repairedBlockTexture: {fileID: 2800000, guid: ecd2270036f604b4081e0edc2b2cfeee,
     type: 3}
   isSpawningThings: 0
   RoomSize: 50
-  levelsToReachBoss: 1
+  levelsToReachBoss: 10
   levelsCompleted: 0
   elevationFactor: 0.05
   isGameEnd: 0

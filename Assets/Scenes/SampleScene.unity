@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.05457212, g: 0.030200612, b: 0.0570336, a: 1}
+  m_IndirectSpecularColor: {r: 0.054572128, g: 0.030200608, b: 0.0570336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -927,6 +927,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe9869fcfef543e4ea27e8a0118b2224, type: 3}
+--- !u!1001 &2024473978016949380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630481, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024473978489630487, guid: 8caa5013d83f88042a6c1ced16287483,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8caa5013d83f88042a6c1ced16287483, type: 3}
 --- !u!1001 &5597576481309902528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -941,99 +1010,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
-      propertyPath: levelsToReachBoss
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedColor.r
-      value: 0.5660378
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedColor.g
-      value: 0.5259879
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedColor.b
-      value: 0.5647028
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
       propertyPath: Earth
       value: 
       objectReference: {fileID: 72743192}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedEarthTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: 756b769e69ed0b54ea930c09c2defa55, type: 3}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedPropColor.r
-      value: 0.5377358
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedPropColor.g
-      value: 0.38300994
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedPropColor.b
-      value: 0.5079809
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedPropColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedPropColorVariationR
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedPropColorVariationG
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedPropColorVariationB
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: corruptedBlockTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: 8e5abb93b53e88947980e39d1cc3febe, type: 3}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: repairedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: repairedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: repairedColor.b
-      value: 0.0184803
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
-        type: 3}
-      propertyPath: repairedBlockTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: ecd2270036f604b4081e0edc2b2cfeee, type: 3}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: m_LocalPosition.x
