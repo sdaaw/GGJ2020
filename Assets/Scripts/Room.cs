@@ -192,7 +192,7 @@ public class Room : MonoBehaviour
                 SetBlockTiles();
             }
 
-            int pickups = Random.Range(0, 3);
+            int pickups = Random.Range(1, 4);
 
             for (int j = 0; j < pickups; j++)
             {
@@ -447,6 +447,8 @@ public class Room : MonoBehaviour
         } else
         {
             player.GetComponent<PlayerController>().UpdateEndingText("You have cleansed and restored the world from the evil plague, the humanity will now rejoice.");
+            yield return new WaitForSeconds(5f);
+            Application.LoadLevel(0);
         }
     }
 

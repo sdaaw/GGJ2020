@@ -167,6 +167,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (m_transform.position.y < -20)
+            GetComponent<Stats>().TakeDmg(100);
+        
         if(m_stats != null && m_stats.isDead)
         {
             if(Input.GetKeyDown(KeyCode.R))

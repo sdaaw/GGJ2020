@@ -4909,6 +4909,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllowMovement: 1
   speed: 6
+  score: 0
+  heroName: 
   dashParticle: {fileID: 1997217139089178888}
   m_playerCamera: {fileID: 0}
   m_layerMask:
@@ -4917,7 +4919,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   m_dashMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   dashDistance: 3
   dashCooldown: 0.5
   canDash: 1
@@ -4926,6 +4928,7 @@ MonoBehaviour:
   soPrefab: {fileID: 4193753465597057874, guid: 390fd8e8a5770864dbe8ba3be3b61f8c,
     type: 3}
   CurWeapon: {fileID: 534020329}
+  hasShield: 0
   playerHps:
   - {fileID: 21300000, guid: 88d896032fad55141aefa653be0acc7f, type: 3}
   - {fileID: 21300000, guid: 4523af5bd07ef724e9804e6006623105, type: 3}
@@ -4937,8 +4940,21 @@ MonoBehaviour:
   swordTrail: {fileID: 552357221870573443}
   playerDash: {fileID: 0}
   playerIcon: {fileID: 21300000, guid: 60409ab5865706a4b9942e2bcb0ee4ec, type: 3}
-  playerIconIMG: {fileID: 0}
-  playerIconCD: {fileID: 0}
+  isWizard: 0
+  firstNames:
+  - James
+  - Paul
+  - Ian
+  - George
+  - Harry
+  lastNames:
+  - Lankshire
+  - Smith
+  - Yorkshire
+  - Brown
+  - York
+  - Tamworth
+  - Oxford
 --- !u!54 &8984004113760615282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4971,6 +4987,7 @@ MonoBehaviour:
   maxHealth: 3
   isDead: 0
   hasDeadAnim: 0
+  scoreOnDeath: 0
 --- !u!1001 &6340570983963202305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5008,6 +5025,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.57570624
       objectReference: {fileID: 0}
+    - target: {fileID: 1156674782770794205, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6396708f3c3b22b469622845bad39f08, type: 2}
     - target: {fileID: 1158339314020091495, guid: bb894ab647f52b345ac70983160c0251,
         type: 3}
       propertyPath: m_IsActive

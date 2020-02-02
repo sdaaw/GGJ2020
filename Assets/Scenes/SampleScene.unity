@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.05457212, g: 0.030200612, b: 0.0570336, a: 1}
+  m_IndirectSpecularColor: {r: 0.054572128, g: 0.030200608, b: 0.0570336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -720,7 +720,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.307
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1145,7 +1145,7 @@ PrefabInstance:
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: levelsToReachBoss
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
@@ -1270,6 +1270,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385233792644677516, guid: c6a0e89e710c0414d86fb28097a09d39,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385233792644677516, guid: c6a0e89e710c0414d86fb28097a09d39,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 11.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385233792644677516, guid: c6a0e89e710c0414d86fb28097a09d39,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 11.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6a0e89e710c0414d86fb28097a09d39, type: 3}
