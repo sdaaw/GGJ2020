@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.026617449, g: 0.015878001, b: 0.028356876, a: 1}
+  m_IndirectSpecularColor: {r: 0.02661745, g: 0.015878001, b: 0.028356878, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -296,7 +296,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1267,6 +1267,18 @@ PrefabInstance:
       propertyPath: repairedColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedTreePrefab
+      value: 
+      objectReference: {fileID: 1106573078777508149, guid: 07a3a922dadc7f8479b9a054c0fa9e09,
+        type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: treePrefab
+      value: 
+      objectReference: {fileID: 1521060244785636911, guid: 00e17f78bf4952f4c94af3281d961f23,
+        type: 3}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: m_LocalPosition.x
