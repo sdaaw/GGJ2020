@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     public float dashDistance;
     public float dashCooldown;
+    public bool canDash = true;
     private bool m_allowDash;
 
     public List<AudioClip> clips = new List<AudioClip>();
@@ -119,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E))
         {
-            if(m_allowDash)
+            if(m_allowDash && canDash)
             {
                 StartCoroutine(Dash());
                 dashTimerForUI = 0;
@@ -169,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 Sword sword = (Sword)CurWeapon;
                 sword.canDealDamage = true;
                 m_anim.SetBool("bladestorm", true);
+                canDash = false;
             }
             //release
             if (Input.GetKeyUp(KeyCode.Mouse1) && CurWeapon != null)
@@ -176,6 +178,7 @@ public class PlayerController : MonoBehaviour
                 Sword sword = (Sword)CurWeapon;
                 sword.canDealDamage = false;
                 m_anim.SetBool("bladestorm", false);
+                canDash = true;
             }
         }
 
@@ -285,5 +288,21 @@ public class PlayerController : MonoBehaviour
     public void UpdateDashImage()
     {
         playerDash.fillAmount = dashTimerForUI / dashCooldown;
+    }
+
+    public void Dead()
+    {
+        m_anim.SetTrigger("Death");
+        AllowMovement = false;
+
+        //needed to stop spin animation
+        if (CurWeapon != null && CurWeapon.GetType() == typeof(Sword))
+            m_anim.SetBool("bladestorm", false);
+
+        if (GetComponent<Gun>())
+            GetComponent<Gun>().enabled = false;
+
+        if (GetComponentInChildren<Sword>())
+            GetComponentInChildren<Sword>().enabled = false;
     }
 }
