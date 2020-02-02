@@ -23,14 +23,14 @@ public class Stats : MonoBehaviour
         if (isDead)
             return;
 
+        health -= dmg;
+        if (health <= 0 && !isDead)
+            Dead();
+
         if (GetComponent<Enemy>())
             GetComponent<Enemy>().FlashHealthBar();
         else if (GetComponent<PlayerController>())
             GetComponent<PlayerController>().UpdateHealthImage();
-
-        health -= dmg;
-        if (health <= 0 && !isDead)
-            Dead();
     }
 
     public void Dead()
