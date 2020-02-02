@@ -67,5 +67,6 @@ public class AvoidanceLogic : MonoBehaviour
         StartCoroutine(room.RepairWorld());
         MeshRenderer mRend = Earth.GetComponentInChildren<MeshRenderer>();
         mRend.sharedMaterial.SetTexture("_MainTex", repairedEarthTexture);
+        room.isGameEnd = true;
     }
 }

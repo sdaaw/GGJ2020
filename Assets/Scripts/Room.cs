@@ -24,9 +24,16 @@ public class Room : MonoBehaviour
     public Color repairedColor;
     public Color corruptedColor;
 
+    public Color corruptedPropColor;
+
     public float corruptedColorVariationR;
     public float corruptedColorVariationG;
     public float corruptedColorVariationB;
+
+
+    public float corruptedPropColorVariationR;
+    public float corruptedPropColorVariationG;
+    public float corruptedPropColorVariationB;
 
     public float colorVariationR;
     public float colorVariationG;
@@ -52,6 +59,8 @@ public class Room : MonoBehaviour
     public bool avoidanceEvent = false;
     public bool isRoomClear = false;
 
+    public GameObject Earth;
+    public Texture corruptedEarthTexture;
 
     public Texture corruptedBlockTexture;
 
@@ -65,6 +74,8 @@ public class Room : MonoBehaviour
     public int levelsCompleted = 0;
 
     public float elevationFactor = 1f;
+
+    public bool isGameEnd;
 
     private bool destroyRoom = false;
     private bool spawnRoom = false;
@@ -103,6 +114,8 @@ public class Room : MonoBehaviour
 
     void GenerateRoom()
     {
+        MeshRenderer mRend = Earth.GetComponentInChildren<MeshRenderer>();
+        mRend.sharedMaterial.SetTexture("_MainTex", corruptedEarthTexture);
         isSpawningThings = true;
         Renderer rend;
         for(float i = 0; i < RoomSize; i += 4)
@@ -124,7 +137,10 @@ public class Room : MonoBehaviour
                     float randScale = Random.Range(0.6f, 1f);
                     b.transform.localScale = new Vector3(0, 0, 0);
                     rend2 = b.GetComponentInChildren<Renderer>();
-                    rend2.material.color = new Color(Random.Range(0.2f, 0.5f), 0, Random.Range(0.1f, 0.3f));
+                    rend2.material.color = new Color(
+                        corruptedPropColor.r + Random.Range(-corruptedPropColorVariationR, corruptedPropColorVariationR),
+                        corruptedPropColor.g + Random.Range(-corruptedPropColorVariationG, corruptedPropColorVariationG),
+                        corruptedPropColor.b + Random.Range(-corruptedPropColorVariationB, corruptedPropColorVariationB));
 
                 }
                 if (Random.Range(0, 50) > 40)
@@ -412,7 +428,13 @@ public class Room : MonoBehaviour
 
         }
         yield return new WaitForSeconds(0.5f);
-        SwitchRoom(); //use this to switch room
+        if(!isGameEnd)
+        {
+            SwitchRoom();
+        } else
+        {
+            player.GetComponent<PlayerController>().UpdateDeadText("You have cleansed and restored the world from the evil plague, the humanity will now rejoice.");
+        }
     }
 
 
