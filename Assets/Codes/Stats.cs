@@ -8,7 +8,7 @@ public class Stats : MonoBehaviour
     public float health;
     public float maxHealth;
 
-    private bool isDead;
+    public bool isDead;
 
     public bool hasDeadAnim;
 
@@ -44,14 +44,7 @@ public class Stats : MonoBehaviour
             StartCoroutine(WaitDestroy());
         else
         {
-            GetComponentInChildren<Animator>().SetTrigger("Death");
-            GetComponent<PlayerController>().AllowMovement = false;
-
-            if (GetComponent<Gun>())
-                GetComponent<Gun>().enabled = false;
-
-            if (GetComponentInChildren<Sword>())
-                GetComponentInChildren<Sword>().enabled = false;
+            GetComponent<PlayerController>().Dead();
         }
     }
 
