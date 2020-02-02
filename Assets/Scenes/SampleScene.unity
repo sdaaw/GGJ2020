@@ -698,33 +698,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2003941691, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_EffectColor.r
-      value: 0
+    - target: {fileID: 585323459148738351, guid: bd5b09ccfbddcda46868e0201a138203,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 61.58
       objectReference: {fileID: 0}
-    - target: {fileID: 2003941691, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_EffectColor.g
-      value: 0
+    - target: {fileID: 1214297021968954262, guid: bd5b09ccfbddcda46868e0201a138203,
+        type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2003941691, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_EffectColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003941691, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_EffectDistance.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003941692, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003941692, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2003941692, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_Color.b
-      value: 1
+    - target: {fileID: 1214297021968954262, guid: bd5b09ccfbddcda46868e0201a138203,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5124782246120397571, guid: bd5b09ccfbddcda46868e0201a138203,
         type: 3}

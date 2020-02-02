@@ -10,6 +10,8 @@ public class AvoidanceLogic : MonoBehaviour
     private Room room;
     public Texture repairedEarthTexture;
 
+    public GameObject audioSourceObject;
+
     public GameObject Earth;
 
     public bool sinMovement = false;
@@ -34,6 +36,9 @@ public class AvoidanceLogic : MonoBehaviour
 
     IEnumerator Fight()
     {
+        Instantiate(audioSourceObject, Vector3.zero, Quaternion.identity);
+        audioSourceObject.GetComponent<AudioSource>().Play();
+
         yield return new WaitForSeconds(5f);
         AT.destination = new Vector3(room.RoomFloor[room.RoomFloor.Count / 2].transform.position.x, 2, room.RoomFloor[room.RoomFloor.Count / 2].transform.position.z);
         AT.moveSpeed = 0.005f;

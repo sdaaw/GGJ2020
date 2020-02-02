@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     private Text cleanseText;
     private Text deadText;
     private Text nameText;
+    private Text endingText;
 
     private Stats m_stats;
 
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour
         cleanseText = m_playerUI.transform.GetChild(6).GetComponent<Text>();
         deadText = m_playerUI.transform.GetChild(7).GetComponent<Text>();
         nameText = m_playerUI.transform.GetChild(8).GetComponent<Text>();
+        endingText = m_playerUI.transform.GetChild(9).GetComponent<Text>();
 
         playerIconIMG.sprite = playerIcon;
         ShowDeadScreen(false);
@@ -434,6 +436,11 @@ public class PlayerController : MonoBehaviour
     public void ShowDeadScreen(bool val)
     {
         deadText.gameObject.SetActive(val);
+    }
+
+    public void UpdateEndingText(string txt)
+    {
+        endingText.text = txt;
     }
 
     public void UpdateDeadText(string txt)
