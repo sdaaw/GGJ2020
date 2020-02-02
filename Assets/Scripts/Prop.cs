@@ -6,6 +6,7 @@ public class Prop : MonoBehaviour
 {
 
     public float randomScale;
+    public bool isCorruptedTree;
     // Start is called before the first frame update
     void Start()
     {

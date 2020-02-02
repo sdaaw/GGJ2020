@@ -42,7 +42,7 @@ BoxCollider:
   m_GameObject: {fileID: 2975279004206938398}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.18, y: 3.13, z: 1.96}
   m_Center: {x: 0, y: 1.03, z: 0}
@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomScale: 0
+  isCorruptedTree: 0
 --- !u!1 &8738701616763788419
 GameObject:
   m_ObjectHideFlags: 0

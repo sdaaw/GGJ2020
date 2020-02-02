@@ -13,6 +13,7 @@ public class Room : MonoBehaviour
     public List<GameObject> RoomFloor = new List<GameObject>();
     public List<GameObject> PropList = new List<GameObject>();
     public List<GameObject> EnemyList = new List<GameObject>();
+    private List<GameObject> niceTrees = new List<GameObject>();
 
     public GameObject playerRangedPrefab;
     public GameObject playerMeleePrefab;
@@ -35,6 +36,8 @@ public class Room : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject wallPrefab;
     public GameObject bushPrefab;
+    public GameObject corruptedTreePrefab;
+    public GameObject treePrefab;
 
     private GameObject player;
 
@@ -72,7 +75,7 @@ public class Room : MonoBehaviour
         //to distribute the level without overlapping because of the size
         m_camera = FindObjectOfType<Camera>();
         RoomSize *= FloorPrefab.transform.localScale.x;
-        avoidanceEvent = true;
+        //avoidanceEvent = true;
         SpawnRoom();
         GenerateRoom();
 
@@ -89,7 +92,22 @@ public class Room : MonoBehaviour
 
                 GameObject a = Instantiate(FloorPrefab.gameObject, new Vector3(i, 15, j), Quaternion.identity);
 
-                if(Random.Range(0, 10) > 8) 
+                if(Random.Range(0, 50) > 45) 
+                {
+                    Renderer rend2;
+                    GameObject b = Instantiate(corruptedTreePrefab, new Vector3(
+                        Random.Range(1, 45),
+                        0.5f,
+                        Random.Range(1, 45)), Quaternion.identity);
+
+                    PropList.Add(b);
+                    float randScale = Random.Range(0.6f, 1f);
+                    b.transform.localScale = new Vector3(0, 0, 0);
+                    rend2 = b.GetComponentInChildren<Renderer>();
+                    rend2.material.color = new Color(Random.Range(0.2f, 0.5f), 0, Random.Range(0.1f, 0.3f));
+
+                }
+                if (Random.Range(0, 50) > 40)
                 {
                     Renderer rend2;
                     GameObject b = Instantiate(bushPrefab, new Vector3(
@@ -105,7 +123,7 @@ public class Room : MonoBehaviour
 
                 }
 
-                if(Random.Range(0, 100) > 98)
+                if (Random.Range(0, 100) > 98)
                 {
                     //powerup spawn
 
@@ -126,7 +144,7 @@ public class Room : MonoBehaviour
         } else
         {
 
-            int blockTiles = 4; 
+            int blockTiles = 15; 
             for (int i = 0; i < blockTiles; i++)
             {
                 SetBlockTiles();
@@ -191,23 +209,11 @@ public class Room : MonoBehaviour
         BlockTile = RoomFloor[Random.Range(0, RoomFloor.Count)].GetComponent<Block>();
         BlockTile.transform.localScale = new Vector3(
             BlockTile.gameObject.transform.localScale.x, 
-            BlockTile.gameObject.transform.localScale.y * 5, 
+            BlockTile.gameObject.transform.localScale.y + Random.Range(0.5f, 1.5f), 
             BlockTile.gameObject.transform.localScale.z);
 
         rend = BlockTile.gameObject.GetComponent<Renderer>();
         rend.material.color = Color.gray;
-
-    }
-
-    void SetDmgTiles()
-    {
-        Block DmgTile;
-        Renderer rend;
-
-        DmgTile = RoomFloor[Random.Range(0, RoomFloor.Count)].GetComponent<Block>();
-        rend = DmgTile.gameObject.GetComponent<Renderer>();
-        rend.material.color = Color.red;
-        StartCoroutine(SpawnDmgProps(DmgTile.gameObject));
 
     }
 
@@ -290,6 +296,11 @@ public class Room : MonoBehaviour
             {
                 Destroy(p);
             }
+            foreach(GameObject nt in niceTrees)
+            {
+                Destroy(nt);
+            }
+            niceTrees.Clear();
             PropList.Clear();
             Destroy(player);
             StartCoroutine(SpawnRoom());
@@ -314,13 +325,23 @@ public class Room : MonoBehaviour
 
         foreach (GameObject prop in PropList)
         {
-            rend = prop.GetComponentInChildren<Renderer>();
-            rend.material.color = new Color(
-                repairedColor.r + Random.Range(-colorVariationR, colorVariationR),
-                repairedColor.g + Random.Range(-colorVariationG, colorVariationG),
-                repairedColor.b + Random.Range(-colorVariationB, colorVariationB));
+            if(prop.GetComponent<Prop>().isCorruptedTree)
+            {
+                GameObject a = Instantiate(treePrefab, prop.transform.position, Quaternion.identity); //switcharoo
+                prop.SetActive(false);
+                niceTrees.Add(a);
+                yield return new WaitForSeconds(0.01f);
+            } else
+            {
+                rend = prop.GetComponentInChildren<Renderer>();
+                rend.material.color = new Color(
+                    repairedColor.r + Random.Range(-colorVariationR, colorVariationR),
+                    repairedColor.g + Random.Range(-colorVariationG, colorVariationG),
+                    repairedColor.b + Random.Range(-colorVariationB, colorVariationB));
 
-            yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.01f);
+            }
+
         }
         yield return new WaitForSeconds(0.5f);
         SwitchRoom(); //use this to switch room

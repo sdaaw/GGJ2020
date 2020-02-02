@@ -45,10 +45,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloorPrefab: {fileID: 9213639829976847859, guid: 9b880c07ddfe5ed42b464e544ad9deee,
     type: 3}
-  playerPrefab: {fileID: 0}
+  RoomFloor: []
+  PropList: []
+  EnemyList: []
+  playerRangedPrefab: {fileID: 0}
+  playerMeleePrefab: {fileID: 0}
+  repairedColor: {r: 0, g: 0, b: 0, a: 0}
+  corruptedColor: {r: 0, g: 0, b: 0, a: 0}
+  corruptedColorVariationR: 0
+  corruptedColorVariationG: 0
+  corruptedColorVariationB: 0
+  colorVariationR: 0
+  colorVariationG: 0
+  colorVariationB: 0
   dangerPrefab: {fileID: 0}
   avoidanceManager: {fileID: 6565009710806804487, guid: c27095dd9f6be94478b882948709a2f2,
     type: 3}
+  enemyPrefab: {fileID: 0}
+  wallPrefab: {fileID: 0}
+  bushPrefab: {fileID: 0}
+  treePrefab: {fileID: 1106573078777508149, guid: 07a3a922dadc7f8479b9a054c0fa9e09,
+    type: 3}
+  randPropScale: 0
   avoidanceEvent: 0
+  isRoomClear: 0
   RoomSize: 5
   elevationFactor: 0.05
