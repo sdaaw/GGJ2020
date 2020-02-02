@@ -52,7 +52,14 @@ public class Room : MonoBehaviour
     public bool isRoomClear = false;
 
 
+    public Texture corruptedBlockTexture;
+
+
     public float RoomSize;
+
+    public int levelsToReachBoss;
+
+    private int levelsCompleted = 0;
 
     public float elevationFactor = 1f;
 
@@ -140,7 +147,7 @@ public class Room : MonoBehaviour
             }
         }
 
-        if (avoidanceEvent)
+        if (levelsCompleted == levelsToReachBoss)
         {
             Instantiate(avoidanceManager, Vector3.zero, Quaternion.identity);
         }
@@ -328,15 +335,23 @@ public class Room : MonoBehaviour
 
     IEnumerator RepairWorld()
     {
+        levelsCompleted++;
         player.GetComponent<PlayerController>().AllowMovement = false;
         Renderer rend;
+        MeshRenderer mRend;
         foreach (GameObject block in RoomFloor)
         {
-            rend = block.GetComponent<Renderer>();
-            rend.material.color = new Color(
+            mRend = block.GetComponent<MeshRenderer>();
+
+
+            mRend.sharedMaterial.SetTexture("_MainTex", corruptedBlockTexture);
+            /*rend.material.color = new Color(
                 repairedColor.r + Random.Range(-colorVariationR, colorVariationR), 
                 repairedColor.g + Random.Range(-colorVariationG, colorVariationG),
-                repairedColor.b + Random.Range(-colorVariationB, colorVariationB));
+                repairedColor.b + Random.Range(-colorVariationB, colorVariationB));*/
+
+            
+
 
             yield return new WaitForSeconds(0.001f);
         }

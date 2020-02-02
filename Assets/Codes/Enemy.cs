@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     public bool isRanged;
     public float escapeDistance;
 
+
     private Animator m_anim;
 
     public Weapon curWeapon;

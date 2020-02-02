@@ -18,12 +18,6 @@ public class Block : MonoBehaviour
 
     public void Start()
     {
-        if(isBlock)
-        {
-            //change texture pls
-            Renderer r;
-            r = gameObject.GetComponent<Renderer>();
-        }
         exitSpeed = Random.Range(0.03f, 0.05f);
         spawnSpeed = Random.Range(0.03f, 0.05f);
     }
