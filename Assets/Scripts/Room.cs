@@ -42,6 +42,7 @@ public class Room : MonoBehaviour
     public GameObject shroomEnemy;
 
     public List<GameObject> pickupPrefabList = new List<GameObject>();
+    private List<GameObject> spawnedPickupPrefabList = new List<GameObject>();
 
     private GameObject player;
 
@@ -159,7 +160,7 @@ public class Room : MonoBehaviour
                 SetBlockTiles();
             }
 
-            int pickups = Random.Range(2,6);
+            int pickups = Random.Range(0, 3);
 
             for (int j = 0; j < pickups; j++)
             {
@@ -172,9 +173,9 @@ public class Room : MonoBehaviour
 
                     if (r >= 0 && r <= 30)
                         pIndex = 0;
-                    else if (r > 30 && r <= 55)
+                    else if (r > 30 && r <= 60)
                         pIndex = 1;
-                    else if (r > 55 && r <= 75)
+                    else if (r > 60 && r <= 75)
                         pIndex = 2;
                     else if (r > 75 && r <= 85)
                         pIndex = 3;
@@ -186,6 +187,7 @@ public class Room : MonoBehaviour
                                                                                          ,2
                                                                                          ,RoomFloor[rBlock].transform.position.z)
                         , Quaternion.identity);
+                    spawnedPickupPrefabList.Add(prop);
                 }
             }
                
@@ -198,8 +200,15 @@ public class Room : MonoBehaviour
 
         //m_camera.transform.position = new Vector3(SpawnTile.transform.position.x, 30, SpawnTile.transform.position.z - 8);
 
-        
-        player = Instantiate(playerPrefab, SpawnTile.transform.position + Vector3.up, Quaternion.identity);
+        if(player == null)
+            player = Instantiate(playerPrefab, SpawnTile.transform.position + Vector3.up, Quaternion.identity);
+        else
+        {
+            player.gameObject.SetActive(true);
+            player.transform.position = SpawnTile.transform.position + Vector3.up;
+            player.GetComponent<PlayerController>().AllowMovement = true;
+        }
+           
 
 
         Camera.main.GetComponent<CameraFollow>().m_follow = player.transform;
@@ -325,9 +334,20 @@ public class Room : MonoBehaviour
             {
                 Destroy(nt);
             }
+
+            /*for(int i = spawnedPickupPrefabList.Count-1; i > 0; i++)
+            {
+                if (spawnedPickupPrefabList[i] != null)
+                    Destroy(spawnedPickupPrefabList[i]);
+            }*/
+            foreach (GameObject spp in spawnedPickupPrefabList)
+                Destroy(spp);
+            spawnedPickupPrefabList.Clear();
+
             niceTrees.Clear();
             PropList.Clear();
-            Destroy(player);
+            //Destroy(player);
+            player.gameObject.SetActive(false);
             StartCoroutine(SpawnRoom());
             destroyRoom = true;
         }
@@ -389,13 +409,12 @@ public class Room : MonoBehaviour
     }
     IEnumerator SpawnRoom()
     {
-        
         yield return new WaitForSeconds(2f);
         //if we want to save rooms
         //WorldFloors.Add(RoomFloor);
 
         //DESTROY EVERYTHING HERE
-        foreach(GameObject r in RoomFloor)
+        foreach (GameObject r in RoomFloor)
         {
             Destroy(r);
         }

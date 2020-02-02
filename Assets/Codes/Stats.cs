@@ -23,6 +23,16 @@ public class Stats : MonoBehaviour
         if (isDead)
             return;
 
+        if(GetComponent<PlayerController>())
+        {
+            PlayerController pc = GetComponent<PlayerController>();
+            if(pc.hasShield)
+            {
+                pc.hasShield = false;
+                return;
+            }
+        }
+
         health -= dmg;
         if (health <= 0 && !isDead)
             Dead();

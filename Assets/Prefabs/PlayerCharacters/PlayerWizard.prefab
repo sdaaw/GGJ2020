@@ -4951,7 +4951,7 @@ MonoBehaviour:
     type: 3}
   bulletVelocity: 15
   canShoot: 1
-  shootDelay: 0.25
+  shootDelay: 0.45
   upgradeLvl: 0
   shoot2Delay: 3
   aoeShotDelay: 0

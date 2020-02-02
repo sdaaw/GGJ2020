@@ -39,7 +39,7 @@ public class PickUp : MonoBehaviour
                         pc.GetComponent<Gun>().upgradeLvl = (int)value;
                     break;
                 case PickUpType.Shield:
-                    //TODO: Implement shield
+                    pc.hasShield = true;
                     break;
             }
 

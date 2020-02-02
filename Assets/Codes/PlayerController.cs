@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     public Weapon CurWeapon;
 
+    public bool hasShield;
+
     public Sprite[] playerHps;
     public Image playerHp;
     private Canvas m_playerUI;
@@ -53,8 +55,12 @@ public class PlayerController : MonoBehaviour
     private float dashTimerForUI;
 
     public Sprite playerIcon;
-    public Image playerIconIMG;
-    public Image playerIconCD;
+    private Image playerIconIMG;
+    private Image playerIconCD;
+
+    private Image hasWepPickup;
+    private Image hasOrbPickup;
+    private Image hasShieldPickup;
 
     private Stats m_stats;
 
@@ -66,21 +72,6 @@ public class PlayerController : MonoBehaviour
             return GetComponent<Gun>() != null;
         }
     }
-
-    public void SetMusic(bool wierdMusic)
-    {
-        if (bgMusic == null)
-            return;
-
-        if (!wierdMusic && bgMusic.clip != clips[0])
-            bgMusic.clip = clips[0];
-        else if (wierdMusic)
-            bgMusic.clip = clips[1];
-
-        if (!bgMusic.isPlaying)
-            bgMusic.Play();
-    }
-
     private void Awake()
     {
         m_transform = transform;
@@ -105,12 +96,17 @@ public class PlayerController : MonoBehaviour
         playerIconIMG = m_playerUI.transform.GetChild(2).GetComponent<Image>();
         playerIconCD = m_playerUI.transform.GetChild(3).GetComponent<Image>();
 
+        hasWepPickup = playerIconIMG.transform.GetChild(0).GetComponent<Image>();
+        hasOrbPickup = playerIconIMG.transform.GetChild(1).GetComponent<Image>();
+        hasShieldPickup = playerIconIMG.transform.GetChild(2).GetComponent<Image>();
+
         playerIconIMG.sprite = playerIcon;
     }
 
     private void Start()
     {
-        AddShieldOrbs(3);
+        //UpdateHealthImage();
+        //AddShieldOrbs(3);
     }
 
     void FixedUpdate()
@@ -141,6 +137,7 @@ public class PlayerController : MonoBehaviour
 
         UpdateDashImage();
         UpdatePlayerIconCD();
+        UpdatePickupsUI();
 
         //SHOOTING & SPELLS
         if (CurWeapon.GetType() == typeof(Gun))
@@ -320,6 +317,28 @@ public class PlayerController : MonoBehaviour
             Gun gun = (Gun)CurWeapon;
             playerIconCD.fillAmount = 1 - (gun.GetShoot2Timer / gun.shoot2Delay);
         }
+    }
+
+    public void UpdatePickupsUI()
+    {
+        if (GetComponentInChildren<ShieldOrb>() != null)
+            hasOrbPickup.gameObject.SetActive(true);
+        else
+            hasOrbPickup.gameObject.SetActive(false);
+
+        if(CurWeapon.GetType() == typeof(Gun))
+        {
+            Gun gun = (Gun)CurWeapon;
+            if (gun.upgradeLvl > 0)
+                hasWepPickup.gameObject.SetActive(true);
+            else
+                hasWepPickup.gameObject.SetActive(false);
+        }
+
+        if (hasShield)
+            hasShieldPickup.gameObject.SetActive(true);
+        else
+            hasShieldPickup.gameObject.SetActive(false);
     }
 
     public void Dead()

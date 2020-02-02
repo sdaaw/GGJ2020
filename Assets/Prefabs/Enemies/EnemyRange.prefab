@@ -560,7 +560,7 @@ MonoBehaviour:
   isEnabled: 1
   AllowMovement: 1
   pc: {fileID: 0}
-  detectDistance: 50
+  detectDistance: 40
   speed: 2
   chase: 0
   detectLayer:
@@ -605,7 +605,7 @@ MonoBehaviour:
     type: 3}
   bulletVelocity: 25
   canShoot: 1
-  shootDelay: 1
+  shootDelay: 2
   upgradeLvl: 0
   shoot2Delay: 0
   aoeShotDelay: 0

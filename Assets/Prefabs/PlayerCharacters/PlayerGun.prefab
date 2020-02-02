@@ -176,7 +176,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   m_bulletPrefab: {fileID: 5925294661424371884, guid: 7a649b98e651a0047bc0762eb1fa5df0,
     type: 3}
-  bulletVelocity: 25
+  bulletVelocity: 30
   canShoot: 1
   shootDelay: 0.25
   upgradeLvl: 0

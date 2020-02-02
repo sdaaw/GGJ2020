@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039aad67fe9ea444b8f12749b2905177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 2
   owner: {fileID: 8984004113760615285}
   swingTimer: 0
   swingTimerMax: 1
@@ -4908,7 +4908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllowMovement: 1
-  speed: 5
+  speed: 6
   dashParticle: {fileID: 1997217139089178888}
   m_playerCamera: {fileID: 0}
   m_layerMask:
@@ -4967,8 +4967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bb9e2676ae929418079d0f6008a867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  maxHealth: 4
+  health: 3
+  maxHealth: 3
   isDead: 0
   hasDeadAnim: 0
 --- !u!1001 &6340570983963202305
@@ -5097,6 +5097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537508492187279968, guid: bb894ab647f52b345ac70983160c0251,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb894ab647f52b345ac70983160c0251, type: 3}

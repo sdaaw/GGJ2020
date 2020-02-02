@@ -31,8 +31,12 @@ public class Gun : Weapon
 
     private void Start()
     {
-        shootTimer = shootDelay;
-        shoot2Timer = shoot2Delay;
+        //player can shoot instantly, enemies cant
+        if(GetComponent<PlayerController>())
+        {
+            shootTimer = shootDelay;
+            shoot2Timer = shoot2Delay;
+        }
     }
 
     private void Update()
