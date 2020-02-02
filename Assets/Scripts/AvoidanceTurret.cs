@@ -9,6 +9,9 @@ public class AvoidanceTurret : MonoBehaviour
     AvoidanceLogic AL;
     Renderer r;
     private float timer = 0;
+    public ParticleSystem deathParticle;
+    public ParticleSystem ogParticle;
+    public ParticleSystem departingParticle;
 
     public List<GameObject> projectiles = new List<GameObject>();
 
@@ -53,7 +56,7 @@ public class AvoidanceTurret : MonoBehaviour
 
         if(circleAttack)
         {
-            if(circleTimer > 0.3f)
+            if(circleTimer > 0.05f)
             {
                 GameObject a = Instantiate(AL.projectileList[Random.Range(0, AL.projectileList.Count)], transform.position, Quaternion.identity);
                 a.transform.position = new Vector3(transform.position.x + (Mathf.Sin(Time.time / 2f) * radius), 2f, transform.position.z + (Mathf.Cos(Time.time / 2f) * radius));
