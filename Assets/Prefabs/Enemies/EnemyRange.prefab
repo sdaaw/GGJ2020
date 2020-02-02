@@ -587,6 +587,7 @@ MonoBehaviour:
   maxHealth: 3
   isDead: 0
   hasDeadAnim: 0
+  scoreOnDeath: 600
 --- !u!114 &6602695225162115887
 MonoBehaviour:
   m_ObjectHideFlags: 0

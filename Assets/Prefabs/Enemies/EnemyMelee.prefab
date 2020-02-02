@@ -634,7 +634,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxHealth: 3
+  isDead: 0
   hasDeadAnim: 0
+  scoreOnDeath: 400
 --- !u!95 &2430811770275193680
 Animator:
   serializedVersion: 3

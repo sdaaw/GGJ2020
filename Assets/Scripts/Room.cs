@@ -225,7 +225,7 @@ public class Room : MonoBehaviour
         e = a.GetComponent<Enemy>();
         if(Random.Range(1, 10) > 7)
         {
-            Instantiate(shroomEnemy, new Vector3(
+            a = Instantiate(shroomEnemy, new Vector3(
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.x,
             1,
             RoomFloor[Random.Range(0, RoomFloor.Count)].transform.position.z), Quaternion.identity);
@@ -239,6 +239,8 @@ public class Room : MonoBehaviour
         player.GetComponent<PlayerController>().AllowMovement = false;
         yield return new WaitForSeconds(3f);
         int enemyCount = Random.Range(2, 5);
+        enemyCount += levelsCompleted/2;
+
         for (int i = 0; i < enemyCount; i++)
         {
             SetEnemies();
@@ -311,7 +313,13 @@ public class Room : MonoBehaviour
                     );
             }
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+
+        if(EnemyList.Count == 0)
+            player.GetComponent<PlayerController>().SetCleanseText(true);
+        else
+            player.GetComponent<PlayerController>().SetCleanseText(false);
+
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             if(EnemyList.Count == 0)
             {
@@ -356,6 +364,8 @@ public class Room : MonoBehaviour
     IEnumerator RepairWorld()
     {
         levelsCompleted++;
+        player.GetComponent<PlayerController>().UpdateRoomText("Rooms cleared " + levelsCompleted + "/" + levelsToReachBoss);
+        player.GetComponent<PlayerController>().score += 1000 * levelsCompleted;
         player.GetComponent<PlayerController>().AllowMovement = false;
         Renderer rend;
         MeshRenderer mRend;

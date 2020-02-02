@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public bool AllowMovement;
     public float speed;
 
+    public float score;
+
     private Rigidbody m_rigidbody;
     private Transform m_transform;
 
@@ -62,6 +64,10 @@ public class PlayerController : MonoBehaviour
     private Image hasOrbPickup;
     private Image hasShieldPickup;
 
+    private Text roomText;
+    private Text scoreText;
+    private Text cleanseText;
+
     private Stats m_stats;
 
 
@@ -99,6 +105,9 @@ public class PlayerController : MonoBehaviour
         hasWepPickup = playerIconIMG.transform.GetChild(0).GetComponent<Image>();
         hasOrbPickup = playerIconIMG.transform.GetChild(1).GetComponent<Image>();
         hasShieldPickup = playerIconIMG.transform.GetChild(2).GetComponent<Image>();
+        roomText = m_playerUI.transform.GetChild(4).GetComponent<Text>();
+        scoreText = m_playerUI.transform.GetChild(5).GetComponent<Text>();
+        cleanseText = m_playerUI.transform.GetChild(6).GetComponent<Text>();
 
         playerIconIMG.sprite = playerIcon;
     }
@@ -138,6 +147,7 @@ public class PlayerController : MonoBehaviour
         UpdateDashImage();
         UpdatePlayerIconCD();
         UpdatePickupsUI();
+        UpdateScoreText("Score " + score);
 
         //SHOOTING & SPELLS
         if (CurWeapon.GetType() == typeof(Gun))
@@ -355,5 +365,20 @@ public class PlayerController : MonoBehaviour
 
         if (GetComponentInChildren<Sword>())
             GetComponentInChildren<Sword>().enabled = false;
+    }
+
+    public void UpdateRoomText(string txt)
+    {
+        roomText.text = txt;
+    }
+
+    public void UpdateScoreText(string txt)
+    {
+        scoreText.text = txt;
+    }
+
+    public void SetCleanseText(bool val)
+    {
+        cleanseText.gameObject.SetActive(val);
     }
 }
