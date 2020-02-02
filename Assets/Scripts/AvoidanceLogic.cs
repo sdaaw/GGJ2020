@@ -8,6 +8,9 @@ public class AvoidanceLogic : MonoBehaviour
     public GameObject avoidanceTurret;
     private AvoidanceTurret AT;
     private Room room;
+    public Texture repairedEarthTexture;
+
+    public GameObject Earth;
 
     public bool sinMovement = false;
     // Start is called before the first frame update
@@ -61,5 +64,8 @@ public class AvoidanceLogic : MonoBehaviour
         yield return new WaitForSeconds(3f);
         AT.deathParticle.Stop();
         AT.gameObject.SetActive(false);
+        StartCoroutine(room.RepairWorld());
+        MeshRenderer mRend = Earth.GetComponentInChildren<MeshRenderer>();
+        mRend.sharedMaterial.SetTexture("_MainTex", repairedEarthTexture);
     }
 }

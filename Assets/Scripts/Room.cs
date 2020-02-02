@@ -366,7 +366,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    IEnumerator RepairWorld()
+    public IEnumerator RepairWorld()
     {
         levelsCompleted++;
         player.GetComponent<PlayerController>().UpdateRoomText("Rooms cleared " + levelsCompleted + "/" + levelsToReachBoss);
