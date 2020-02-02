@@ -60,7 +60,7 @@ public class Room : MonoBehaviour
 
     public int levelsToReachBoss;
 
-    private int levelsCompleted = 0;
+    public int levelsCompleted = 0;
 
     public float elevationFactor = 1f;
 

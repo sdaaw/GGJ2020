@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     private Text roomText;
     private Text scoreText;
     private Text cleanseText;
+    private Text deadText;
 
     private Stats m_stats;
 
@@ -108,8 +109,10 @@ public class PlayerController : MonoBehaviour
         roomText = m_playerUI.transform.GetChild(4).GetComponent<Text>();
         scoreText = m_playerUI.transform.GetChild(5).GetComponent<Text>();
         cleanseText = m_playerUI.transform.GetChild(6).GetComponent<Text>();
+        deadText = m_playerUI.transform.GetChild(7).GetComponent<Text>();
 
         playerIconIMG.sprite = playerIcon;
+        ShowDeadScreen(false);
     }
 
     private void Start()
@@ -129,6 +132,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(m_stats != null && m_stats.isDead)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+        }
+
         if (!AllowMovement)
             return;
 
@@ -353,6 +364,11 @@ public class PlayerController : MonoBehaviour
 
     public void Dead()
     {
+        UpdateDeadText("playername" + " died\n" + 
+                        "Rooms cleared " + FindObjectOfType<Room>().levelsCompleted + "\n" +
+                        "Final score " + score + "\n" + "Press 'R' to spawn as a new hero");
+        ShowDeadScreen(true);
+
         m_anim.SetTrigger("Death");
         AllowMovement = false;
 
@@ -380,5 +396,15 @@ public class PlayerController : MonoBehaviour
     public void SetCleanseText(bool val)
     {
         cleanseText.gameObject.SetActive(val);
+    }
+
+    public void ShowDeadScreen(bool val)
+    {
+        deadText.gameObject.SetActive(val);
+    }
+
+    public void UpdateDeadText(string txt)
+    {
+        deadText.text = txt;
     }
 }
