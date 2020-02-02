@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &72743192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8385233792539884808, guid: c6a0e89e710c0414d86fb28097a09d39,
+    type: 3}
+  m_PrefabInstance: {fileID: 8385233793709247603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +935,31 @@ PrefabInstance:
         type: 3}
       propertyPath: corruptedColor.b
       value: 0.5647028
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: Earth
+      value: 
+      objectReference: {fileID: 72743192}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedEarthTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 756b769e69ed0b54ea930c09c2defa55, type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedPropColor.r
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedPropColor.g
+      value: 0.4465112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedPropColor.b
+      value: 0.53032696
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
