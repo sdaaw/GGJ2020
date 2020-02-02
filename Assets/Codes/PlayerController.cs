@@ -71,6 +71,31 @@ public class PlayerController : MonoBehaviour
     private Stats m_stats;
 
 
+
+    public string[] firstNames = new string[] {
+
+        "James",
+        "Paul",
+        "Ian",
+        "George",
+        "Harry"
+
+    };
+
+
+    public string[] lastNames = new string[]
+    {
+
+        "Lankshire",
+        "Smith",
+        "Yorkshire",
+        "Brown",
+        "York",
+        "Tamworth",
+        "Oxford"
+
+    };
+
     public bool HasGun
     {
         get
@@ -329,6 +354,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     public void UpdatePickupsUI()
     {
         if (GetComponentInChildren<ShieldOrb>() != null)
@@ -380,5 +407,43 @@ public class PlayerController : MonoBehaviour
     public void SetCleanseText(bool val)
     {
         cleanseText.gameObject.SetActive(val);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //xD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public string GetName()
+    {
+        return firstNames[Random.Range(0, firstNames.Length)] + " " + lastNames[Random.Range(0, lastNames.Length)];
     }
 }
