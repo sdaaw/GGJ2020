@@ -949,17 +949,57 @@ PrefabInstance:
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: corruptedPropColor.r
-      value: 0.5471698
+      value: 0.5377358
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: corruptedPropColor.g
-      value: 0.4465112
+      value: 0.38300994
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
       propertyPath: corruptedPropColor.b
-      value: 0.53032696
+      value: 0.5079809
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedPropColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedPropColorVariationR
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedPropColorVariationG
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedPropColorVariationB
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedBlockTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 8e5abb93b53e88947980e39d1cc3febe, type: 3}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: repairedColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: repairedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: repairedColor.b
+      value: 0.0184803
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
