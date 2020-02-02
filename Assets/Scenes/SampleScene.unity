@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.02661745, g: 0.015878001, b: 0.028356878, a: 1}
+  m_IndirectSpecularColor: {r: 0.054572128, g: 0.030200608, b: 0.0570336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -692,22 +692,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 346728452, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 346728453, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 346728453, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 263
-      objectReference: {fileID: 0}
-    - target: {fileID: 346728455, guid: bd5b09ccfbddcda46868e0201a138203, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5124782246120397571, guid: bd5b09ccfbddcda46868e0201a138203,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -925,6 +909,26 @@ PrefabInstance:
         type: 3}
       propertyPath: levelsToReachBoss
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedColor.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedColor.g
+      value: 0.5259879
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597576482571443074, guid: 55d99d47768869e46bd6f9f9bd463669,
+        type: 3}
+      propertyPath: corruptedColor.b
+      value: 0.5647028
       objectReference: {fileID: 0}
     - target: {fileID: 5597576482571443075, guid: 55d99d47768869e46bd6f9f9bd463669,
         type: 3}
