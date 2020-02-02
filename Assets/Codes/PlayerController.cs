@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public Sprite[] playerHps;
     public Image playerHp;
     private Canvas m_playerUI;
+    public ParticleSystem swordTrail;
 
     public Image playerDash;
     private float dashTimerForUI;
@@ -169,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 Sword sword = (Sword)CurWeapon;
                 sword.canDealDamage = true;
                 m_anim.SetBool("bladestorm", true);
+                swordTrail.Play();
             }
             //release
             if (Input.GetKeyUp(KeyCode.Mouse1) && CurWeapon != null)
@@ -176,6 +178,7 @@ public class PlayerController : MonoBehaviour
                 Sword sword = (Sword)CurWeapon;
                 sword.canDealDamage = false;
                 m_anim.SetBool("bladestorm", false);
+                swordTrail.Stop();
             }
         }
 
